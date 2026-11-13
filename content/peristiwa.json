@@ -1,0 +1,47 @@
+[
+  {
+    "id": "kj-1884-erfpacht",
+    "lokasi_id": "kali-jompo",
+    "tahun": "1884",
+    "periode_label": "29 September 1884",
+    "judul": "Keterangan hak erfpacht Petoengroto/Kalidjompo",
+    "ringkasan": "Keterangan hak erfpacht atas lahan yang berkaitan dengan Petoengroto/Kalidjompo pada 29 September 1884, dengan luas yang disebutkan mencapai 524 hektare serta komoditas yang dikembangkan meliputi kopi dan karet.",
+    "status": "bersumber",
+    "catatan": "Tahun 1884 berkaitan dengan keterangan hak atas lahan dan tidak boleh langsung disamakan atau digabung dengan pendirian perusahaan pada tahun 1890. Hubungan keduanya masih perlu diperiksa lebih lanjut melalui dokumen sejarah.",
+    "sumber_ids": ["izzah-2020"]
+  },
+  {
+    "id": "kj-1890-perusahaan",
+    "lokasi_id": "kali-jompo",
+    "tahun": "1890",
+    "periode_label": "1890",
+    "judul": "Pendirian Kalie Djompo Cultuur",
+    "ringkasan": "Basis data Colonial Business Indonesia mencatat pendirian perusahaan Kalie Djompo Cultuur pada tahun 1890 yang bergerak dalam usaha perkebunan kopi.",
+    "status": "bersumber",
+    "catatan": "Merujuk pada catatan formal pendirian badan usaha. Terpisah secara kronologis dari keterangan hak erfpacht tahun 1884.",
+    "sumber_ids": ["colonial-business-1890"]
+  },
+  {
+    "id": "kj-1998-2020-buruh",
+    "lokasi_id": "kali-jompo",
+    "tahun": "1998–2020",
+    "periode_label": "1998–2020",
+    "judul": "Periode kajian dinamika kehidupan buruh Kalijompo",
+    "ringkasan": "Kajian perubahan hubungan kerja, tingkat upah, kesejahteraan, dan kondisi sosial ekonomi masyarakat perkebunan Kali Jompo.",
+    "status": "bersumber",
+    "catatan": "Merupakan rentang periode riset akademis; rincian peristiwa tahunan spesifik menyusul dari kurasi lanjutan FIB.",
+    "sumber_ids": ["fitriyah-2025"]
+  },
+  {
+    "id": "st-hgu-penguasaan",
+    "lokasi_id": "sumber-tenggulun",
+    "tahun": "Perlu pemeriksaan",
+    "periode_label": "Arsip HGU & Pengelolaan",
+    "judul": "Penguasaan lahan dan hak guna usaha Sumber Tenggulun",
+    "ringkasan": "Dokumen sekunder memuat keterangan mengenai hak guna usaha (HGU), nama perusahaan pengelola, serta komoditas kopi, karet, dan kakao di Desa Manggisan, Tanggul.",
+    "status": "perlu_pemeriksaan",
+    "catatan": "Belum ada peristiwa bertanggal definitif; tahun keputusan HGU dan angka luas lahan masih perlu diperiksa ulang melalui penelusuran dokumen arsip primer sebelum dinyatakan final.",
+    "sumber_ids": ["linda-hgu", "sel-1994"]
+  }
+]
+

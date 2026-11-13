@@ -1,0 +1,169 @@
+---
+import { sumber } from '../lib/content';
+---
+
+<!-- Drawer Backdrop -->
+<div
+  id="ref-drawer-backdrop"
+  class="fixed inset-0 bg-ink/30 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"
+  aria-hidden="true"
+></div>
+
+<!-- Reference Drawer Panel -->
+<aside
+  id="ref-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="ref-drawer-heading"
+  class="fixed top-0 right-0 bottom-0 w-full sm:w-[480px] z-50 bg-ground border-l border-line p-6 md:p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out shadow-2xl overflow-y-auto"
+>
+  <div>
+    <!-- Drawer Header -->
+    <div class="flex items-start justify-between pb-4 border-b border-line">
+      <div>
+        <span class="text-[11px] font-sans tracking-widest text-muted uppercase">Daftar Bibliografi Lengkap</span>
+        <h3 id="ref-drawer-heading" class="text-xl font-serif text-ink mt-1">Sumber & Rujukan Sejarah</h3>
+      </div>
+      <button
+        type="button"
+        id="ref-drawer-close"
+        class="text-xs font-sans px-2.5 py-1 border border-line text-muted hover:text-ink hover:border-ink transition-colors"
+        aria-label="Tutup daftar referensi"
+      >
+        Tutup [Esc]
+      </button>
+    </div>
+
+    <!-- Live Filter Input -->
+    <div class="mt-4">
+      <label for="ref-search" class="sr-only">Cari referensi</label>
+      <input
+        type="search"
+        id="ref-search"
+        placeholder="Cari berdasarkan penulis, judul, atau tahun..."
+        class="w-full text-xs font-sans px-3 py-2 bg-surface border border-line text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent"
+        style="border-radius: var(--radius-sm);"
+      />
+    </div>
+
+    <!-- Source List -->
+    <div id="ref-drawer-list" class="mt-6 space-y-6">
+      {sumber.map((s, idx) => (
+        <article
+          class="ref-drawer-item pb-5 border-b border-line/40 last:border-0"
+          data-text={`${s.penulis} ${s.judul} ${s.tahun} ${s.jenis} ${s.catatan}`.toLowerCase()}
+        >
+          <div class="flex items-center justify-between text-[11px] font-sans text-muted mb-1.5">
+            <span class="tabular font-medium text-accent">[{idx + 1}] {s.jenis} · {s.tahun}</span>
+            <span class={s.status === 'bersumber' ? 'text-accent border border-accent/40 px-1 py-0.2' : 'text-muted border border-dashed border-line px-1 py-0.2'}>
+              {s.status === 'bersumber' ? 'Bersumber' : 'Perlu Pemeriksaan'}
+            </span>
+          </div>
+
+          <h4 class="text-sm font-serif italic text-ink leading-snug">
+            {s.judul}
+          </h4>
+
+          <p class="text-xs font-sans text-ink/80 mt-1">
+            {s.penulis}
+          </p>
+
+          {s.penerbit && (
+            <p class="text-[11px] font-sans text-muted mt-0.5">
+              Penerbit: {s.penerbit}
+            </p>
+          )}
+
+          <p class="text-[11px] font-sans text-muted mt-0.5 tabular">
+            Halaman: {s.halaman || '[ISI DARI FIB]'}
+          </p>
+
+          {s.catatan && (
+            <p class="text-xs font-sans text-muted/90 mt-2 p-2 bg-surface border-l-2 border-line text-[11px] leading-relaxed">
+              {s.catatan}
+            </p>
+          )}
+
+          {s.url && (
+            <div class="mt-2.5">
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-sans text-accent hover:text-ink inline-flex items-center gap-1 border-b border-accent/40 hover:border-ink transition-colors"
+              >
+                <span>Buka naskah / repositori</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Drawer Footer -->
+  <div class="pt-6 mt-6 border-t border-line text-[11px] font-sans text-muted flex items-center justify-between">
+    <span>Kurasi naskah oleh Tim FIB Universitas Jember</span>
+    <span class="tabular">Total: {sumber.length} Sumber</span>
+  </div>
+</aside>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const drawer = document.getElementById('ref-drawer');
+    const backdrop = document.getElementById('ref-drawer-backdrop');
+    const closeBtn = document.getElementById('ref-drawer-close');
+    const searchInput = document.getElementById('ref-search');
+    const items = document.querySelectorAll('.ref-drawer-item');
+
+    let lastActiveElement = null;
+
+    window.openRefDrawer = function (triggerEl) {
+      lastActiveElement = triggerEl || document.activeElement;
+      drawer?.classList.remove('translate-x-full');
+      backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop?.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+      searchInput?.focus();
+    };
+
+    window.closeRefDrawer = function () {
+      drawer?.classList.add('translate-x-full');
+      backdrop?.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+      if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+        lastActiveElement.focus();
+      }
+    };
+
+    // Open triggers: any button with data-open-ref-drawer
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-open-ref-drawer]');
+      if (trigger) {
+        e.preventDefault();
+        window.openRefDrawer(trigger);
+      }
+    });
+
+    closeBtn?.addEventListener('click', window.closeRefDrawer);
+    backdrop?.addEventListener('click', window.closeRefDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !drawer?.classList.contains('translate-x-full')) {
+        window.closeRefDrawer();
+      }
+    });
+
+    // Simple search filter
+    searchInput?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      items.forEach((item) => {
+        const text = item.getAttribute('data-text') || '';
+        item.style.display = !q || text.includes(q) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+

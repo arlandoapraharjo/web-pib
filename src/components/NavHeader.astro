@@ -1,0 +1,72 @@
+---
+import { proyek } from '../lib/content';
+---
+
+<!-- Architectural Navbar (Strict PRD Radius 0-4px, No Rounded-Full Badge Pills) -->
+<header class="fixed top-0 left-0 right-0 z-40 px-3 sm:px-6 py-3 pointer-events-none transition-all duration-300">
+  <div
+    class="max-w-5xl mx-auto h-12 md:h-13 px-4 md:px-6 flex items-center justify-between text-xs font-sans pointer-events-auto bg-ground/90 border border-line/60 shadow-[0_4px_16px_rgb(0,0,0,0.03)] dark:shadow-[0_4px_16px_rgb(0,0,0,0.15)] transition-colors duration-200"
+    style="border-radius: var(--radius-sm);"
+  >
+    <!-- Clean Brand Title -->
+    <div class="flex items-center gap-3">
+      <a href="#bab-0" class="font-serif font-bold text-sm md:text-base text-ink hover:text-accent transition-colors tracking-tight flex items-center gap-2.5 py-2 min-h-[36px]">
+        <span class="w-1.5 h-1.5 bg-accent inline-block" style="border-radius: 1px;"></span>
+        <span>{proyek.judul}</span>
+      </a>
+    </div>
+
+    <!-- Architectural Navigation Links (Desktop) -->
+    <nav class="hidden md:flex items-center gap-1 text-muted" aria-label="Navigasi Bab">
+      <a href="#bab-1" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Peta</a>
+      <a href="#bab-2" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Kali Jompo</a>
+      <a href="#bab-3" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Sumber Tenggulun</a>
+      <a href="#bab-4" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Linimasa</a>
+      <a href="#bab-5" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Perbandingan</a>
+      <a href="#bab-6" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Sosial</a>
+      <a href="#bab-7" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Galeri</a>
+    </nav>
+
+    <!-- Right Controls: Reference Trigger & Theme Toggle -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button
+        type="button"
+        data-open-ref-drawer
+        class="min-h-[30px] px-3 py-1 bg-ink text-ground hover:bg-accent text-xs font-sans font-medium transition-all duration-200 cursor-pointer"
+        style="border-radius: var(--radius-sm);"
+        aria-label="Buka bibliografi dan referensi dokumen sejarah"
+      >
+        Referensi
+      </button>
+
+      <button
+        type="button"
+        id="theme-toggle"
+        class="min-h-[30px] min-w-[32px] px-2.5 py-1 border border-line/60 hover:border-ink text-ink transition-all duration-200 hover:bg-surface text-[11px] font-sans flex items-center justify-center cursor-pointer"
+        style="border-radius: var(--radius-sm);"
+        aria-label="Ganti mode tampilan terang atau gelap"
+      >
+        <span id="theme-toggle-label">Gelap</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeLabel = document.getElementById('theme-toggle-label');
+    const root = document.documentElement;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    root.setAttribute('data-theme', currentTheme);
+    if (themeLabel) themeLabel.textContent = currentTheme === 'dark' ? 'Terang' : 'Gelap';
+
+    themeToggle?.addEventListener('click', () => {
+      const active = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', active);
+      localStorage.setItem('theme', active);
+      if (themeLabel) themeLabel.textContent = active === 'dark' ? 'Terang' : 'Gelap';
+    });
+  });
+</script>

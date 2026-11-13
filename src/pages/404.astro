@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Halaman di Luar Peta Elevasi">
+  <div class="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center">
+    <!-- Schematic Contour Missing Mark -->
+    <div class="w-48 h-20 mb-6 opacity-60" aria-hidden="true">
+      <svg viewBox="0 0 200 80" fill="none" class="w-full h-full">
+        <path
+          d="M 10,60 C 50,20 80,70 120,30 C 150,5 180,40 190,20"
+          stroke="var(--color-line)"
+          stroke-width="1.5"
+          stroke-dasharray="4 6"
+        />
+        <circle cx="120" cy="30" r="3" fill="var(--color-accent)" />
+      </svg>
+    </div>
+
+    <span class="text-xs font-sans tracking-widest uppercase text-muted block mb-2">
+      Kode Status 404 · Di Luar Peta
+    </span>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-ink tracking-tight">
+      Halaman di Luar Jalur Kontur
+    </h1>
+    <p class="text-xs sm:text-sm font-sans text-muted mt-3 max-w-md leading-relaxed">
+      Koordinat atau tautan yang Anda tuju tidak tercatat dalam arsip eksplorasi Perkebunan Kali Jompo maupun Sumber Tenggulun.
+    </p>
+
+    <div class="mt-8 flex items-center gap-4 text-xs font-sans">
+      <a
+        href="/"
+        class="min-h-[40px] px-5 py-2.5 bg-ink text-ground hover:bg-accent hover:-translate-y-0.5 transition-all inline-flex items-center cursor-pointer"
+        style="border-radius: var(--radius-sm);"
+      >
+        Kembali ke Beranda Penelusuran
+      </a>
+      <button
+        type="button"
+        data-open-ref-drawer
+        class="min-h-[40px] px-5 py-2.5 border border-line text-ink hover:bg-surface transition-all cursor-pointer inline-flex items-center"
+        style="border-radius: var(--radius-sm);"
+      >
+        Buka Arsip Referensi
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+

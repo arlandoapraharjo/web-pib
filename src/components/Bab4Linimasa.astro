@@ -1,0 +1,260 @@
+---
+import { peristiwa } from '../lib/content';
+import RefMarker from './RefMarker.astro';
+
+const kjEvents = peristiwa.filter((p) => p.lokasi_id === 'kali-jompo');
+const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
+---
+
+<section id="bab-4" class="relative w-full border-t border-line/40 overflow-hidden">
+  
+  <!-- DESKTOP PINNED HORIZONTAL STAGE (Controlled purely by mouse wheel / trackpad scroll) -->
+  <div id="timeline-pinned-wrapper" class="hidden md:flex flex-col justify-between w-full h-screen overflow-hidden py-10 px-8 lg:px-16 bg-ground">
+    
+    <!-- Top Stage Header -->
+    <div class="flex items-end justify-between border-b border-line pb-4 shrink-0">
+      <div>
+        <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 4 / Kronologi Lintas Abad</span>
+        <h2 class="text-2xl lg:text-3xl font-serif text-ink mt-0.5">Linimasa Sejarah Dua Perkebunan</h2>
+      </div>
+
+      <!-- Live Wheel Scroll Guide -->
+      <div class="flex items-center gap-3 text-xs font-sans text-muted">
+        <span class="inline-flex items-center gap-2 border border-line/60 rounded-sm px-2.5 py-1 bg-surface/40">
+          <span class="w-1.5 h-1.5 bg-accent" style="border-radius: 1px;"></span>
+          <span>Gulir Mouse / Trackpad untuk Menelusuri Linimasa Horizontal →</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- The Horizontal Moving Track (Translates with GSAP ScrollTrigger) -->
+    <div class="my-auto w-full overflow-visible py-4">
+      <div
+        id="timeline-scroll-track"
+        class="flex flex-nowrap items-stretch gap-8 will-change-transform select-none"
+      >
+        <!-- Intro Anchor Card -->
+        <div class="w-[320px] shrink-0 border border-line/60 bg-surface/40 p-6 flex flex-col justify-between rounded-sm">
+          <div>
+            <span class="text-[11px] font-sans tracking-widest uppercase text-accent font-medium">Skala Waktu 1884–2020</span>
+            <h3 class="text-xl font-serif text-ink mt-2">Dua Lereng, Dua Jalur Historis</h3>
+            <p class="text-xs font-sans text-muted mt-3 leading-relaxed">
+              Penelusuran komparatif antara Kali Jompo di timur dan Sumber Tenggulun di barat. Garis solid menandai data bersumber, garis putus-putus menandai verifikasi arsip.
+            </p>
+          </div>
+          <div class="text-[11px] font-sans text-muted/80 italic pt-3 border-t border-line/30">
+            Gulir terus ke bawah untuk menggeser →
+          </div>
+        </div>
+
+        <!-- Track Card 1: Kali Jompo 1884 -->
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
+              <span class="font-medium">Kali Jompo (Lereng Timur)</span>
+              <span class="border-b border-accent text-[11px]">Bersumber</span>
+            </div>
+            <div class="mt-4">
+              <span class="text-3xl font-serif text-ink tabular block font-bold">1884</span>
+              <span class="text-[11px] font-sans text-muted block mt-0.5">29 September 1884</span>
+              <h3 class="text-base font-serif text-ink mt-2 leading-snug">
+                Keterangan Hak Erfpacht Petoengroto/Kalidjompo
+                <RefMarker id="izzah-2020" nomor="1" />
+              </h3>
+              <p class="text-xs font-sans text-ink/80 mt-2.5 leading-relaxed">
+                Hak erfpacht atas lahan seluas 524 hektare dengan komoditas kopi dan karet.
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-line/30 text-[11px] font-sans text-muted italic">
+            Catatan: Keterangan hak atas lahan; dipisahkan secara tegas dari pendirian perusahaan 1890.
+          </div>
+        </div>
+
+        <!-- Connecting Bar 1884 -> 1890 -->
+        <div class="shrink-0 flex flex-col justify-center items-center px-2">
+          <span class="text-[10px] font-sans text-muted tracking-widest uppercase mb-1">6 Tahun</span>
+          <div class="w-16 h-[2px] bg-accent"></div>
+        </div>
+
+        <!-- Track Card 2: Kali Jompo 1890 -->
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
+              <span class="font-medium">Kali Jompo (Badan Usaha)</span>
+              <span class="border-b border-accent text-[11px]">Bersumber</span>
+            </div>
+            <div class="mt-4">
+              <span class="text-3xl font-serif text-ink tabular block font-bold">1890</span>
+              <span class="text-[11px] font-sans text-muted block mt-0.5">Colonial Business Indonesia</span>
+              <h3 class="text-base font-serif text-ink mt-2 leading-snug">
+                Pendirian Kalie Djompo Cultuur
+                <RefMarker id="colonial-business-1890" nomor="2" />
+              </h3>
+              <p class="text-xs font-sans text-ink/80 mt-2.5 leading-relaxed">
+                Catatan resmi pendirian perusahaan Kalie Djompo Cultuur yang bergerak dalam usaha perkebunan kopi.
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-line/30 text-[11px] font-sans text-muted italic">
+            Catatan: Merujuk pada badan usaha; hubungan historis dengan hak erfpacht 1884 masih diteliti lanjut.
+          </div>
+        </div>
+
+        <!-- TIME BREAK MARKER (PRD Section 11) -->
+        <div class="shrink-0 flex flex-col justify-center items-center px-4">
+          <div class="px-3 py-1 border border-line/60 bg-ground text-[11px] font-sans text-muted flex items-center gap-2 rounded-sm">
+            <span>// Jeda Waktu 108 Tahun //</span>
+          </div>
+          <div class="w-24 h-[1px] border-b border-dashed border-line mt-2"></div>
+        </div>
+
+        <!-- Track Card 3: Kali Jompo 1998-2020 -->
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
+              <span class="font-medium">Kali Jompo (Kehidupan Buruh)</span>
+              <span class="border-b border-accent text-[11px]">Periode Kajian</span>
+            </div>
+            <div class="mt-4">
+              <span class="text-2xl font-serif text-ink tabular block font-bold">1998–2020</span>
+              <span class="text-[11px] font-sans text-muted block mt-0.5">Riset Sosial Nurul Fitriyah</span>
+              <h3 class="text-base font-serif text-ink mt-2 leading-snug">
+                Dinamika Kehidupan Buruh Kalijompo
+                <RefMarker id="fitriyah-2025" nomor="3" />
+              </h3>
+              <p class="text-xs font-sans text-ink/80 mt-2.5 leading-relaxed">
+                Kajian mendalam mengenai relasi kerja buruh, sistem upah, kesejahteraan sosial, dan perkebunan kopi rakyat.
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-line/30 text-[11px] font-sans text-muted italic">
+            Rincian kronologi tahunan spesifik sedang dihimpun oleh tim FIB UNEJ.
+          </div>
+        </div>
+
+        <!-- Track Card 4: Sumber Tenggulun (Jalur Bawah / Pembanding) -->
+        <div class="w-[420px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm border-dashed shadow-sm">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-line text-xs font-sans text-muted">
+              <span class="font-medium text-ink">Sumber Tenggulun (Jember Barat)</span>
+              <span class="border-b border-dashed border-line text-[11px]">Perlu Pemeriksaan</span>
+            </div>
+            <div class="mt-4">
+              <span class="text-2xl font-serif text-muted tabular block">Arsip HGU</span>
+              <span class="text-[11px] font-sans text-muted block mt-0.5">Dokumen HGU & SEL 1994</span>
+              <h3 class="text-base font-serif text-ink mt-2 leading-snug">
+                Penguasaan Lahan dan Hak Guna Usaha
+                <RefMarker id="linda-hgu" nomor="4" />
+                <RefMarker id="sel-1994" nomor="6" />
+              </h3>
+              <p class="text-xs font-sans text-ink/80 mt-2.5 leading-relaxed">
+                Keterangan HGU, nama badan usaha pengelola, dan komoditas kopi, karet, kakao. Belum ada penetapan tahun definitif sebelum verifikasi dokumen primer selesai.
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-line/30 text-[11px] font-sans text-muted/90 italic">
+            Data luas lahan dan tahun SK HGU tampil sebagai data perlu pemeriksaan.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Stage Legend & Outro Hint -->
+    <div class="flex items-center justify-between border-t border-line pt-4 text-xs font-sans text-muted shrink-0">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <span class="w-3 h-0.5 bg-accent inline-block"></span>
+          <span>Garis Solid: Data Bersumber</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="w-3 h-0.5 border-b border-dashed border-line inline-block"></span>
+          <span>Garis Putus-Putus: Perlu Pemeriksaan</span>
+        </span>
+      </div>
+      <div class="text-ink font-medium">
+        Lanjut gulir ke Bab 5 (Perbandingan) ↓
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE VIEW (Clean Natural Vertical Stack for Touch Devices) -->
+  <div class="md:hidden py-16 px-4 space-y-6">
+    <div class="mb-6">
+      <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 4 / Kronologi Lintas Abad</span>
+      <h2 class="text-2xl font-serif text-ink mt-1">Linimasa Sejarah Dua Perkebunan</h2>
+      <p class="text-xs font-sans text-muted mt-2 leading-relaxed">
+        Skala waktu komparatif antara Kali Jompo dan Sumber Tenggulun.
+      </p>
+    </div>
+
+    <!-- Mobile Card 1 -->
+    <div class="border border-line bg-surface p-5 rounded-sm">
+      <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
+        <span>Kali Jompo</span>
+        <span>Bersumber</span>
+      </div>
+      <span class="text-2xl font-serif text-ink block mt-3 tabular font-bold">1884</span>
+      <h3 class="text-sm font-serif text-ink mt-1 font-medium">
+        Hak Erfpacht Petoengroto/Kalidjompo (524 ha)
+        <RefMarker id="izzah-2020" nomor="1" />
+      </h3>
+      <p class="text-xs font-sans text-ink/80 mt-2">
+        Keterangan hak atas lahan kopi dan karet. Terpisah dari pendirian perusahaan 1890.
+      </p>
+    </div>
+
+    <!-- Mobile Card 2 -->
+    <div class="border border-line bg-surface p-5 rounded-sm">
+      <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
+        <span>Kali Jompo</span>
+        <span>Bersumber</span>
+      </div>
+      <span class="text-2xl font-serif text-ink block mt-3 tabular font-bold">1890</span>
+      <h3 class="text-sm font-serif text-ink mt-1 font-medium">
+        Pendirian Perusahaan Kalie Djompo Cultuur
+        <RefMarker id="colonial-business-1890" nomor="2" />
+      </h3>
+      <p class="text-xs font-sans text-ink/80 mt-2">
+        Usaha perkebunan kopi berbasis data Colonial Business Indonesia.
+      </p>
+    </div>
+
+    <div class="py-2 text-center text-xs font-sans text-muted border-y border-dashed border-line">
+      // Jeda waktu 1890 ke 1998 (108 Tahun) //
+    </div>
+
+    <!-- Mobile Card 3 -->
+    <div class="border border-line bg-surface p-5 rounded-sm">
+      <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
+        <span>Kali Jompo</span>
+        <span>Periode Kajian</span>
+      </div>
+      <span class="text-xl font-serif text-ink block mt-3 tabular font-bold">1998–2020</span>
+      <h3 class="text-sm font-serif text-ink mt-1 font-medium">
+        Dinamika Kehidupan Buruh Kalijompo
+        <RefMarker id="fitriyah-2025" nomor="3" />
+      </h3>
+      <p class="text-xs font-sans text-ink/80 mt-2">
+        Kajian upah, relasi kerja buruh, dan kopi rakyat.
+      </p>
+    </div>
+
+    <!-- Mobile Card 4 -->
+    <div class="border border-line border-dashed bg-surface p-5 rounded-sm">
+      <div class="flex items-center justify-between text-xs font-sans text-muted pb-2 border-b border-line">
+        <span>Sumber Tenggulun</span>
+        <span>Perlu Pemeriksaan</span>
+      </div>
+      <span class="text-lg font-serif text-muted block mt-3 font-medium">Arsip HGU</span>
+      <h3 class="text-sm font-serif text-ink mt-1">
+        Penguasaan Lahan dan Keputusan HGU
+        <RefMarker id="linda-hgu" nomor="4" />
+        <RefMarker id="sel-1994" nomor="6" />
+      </h3>
+      <p class="text-xs font-sans text-ink/80 mt-2">
+        Tahun keputusan HGU dan angka luas lahan masih diverifikasi lanjut.
+      </p>
+    </div>
+  </div>
+</section>

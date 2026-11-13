@@ -1,0 +1,70 @@
+---
+import { proyek } from '../lib/content';
+---
+
+<footer id="bab-8" class="relative w-full pt-16 pb-24 border-t border-line bg-surface/40">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <!-- Top Editorial Callout -->
+    <div class="py-12 border-b border-line/60 text-center max-w-3xl mx-auto space-y-6">
+      <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 8 / Epilog & Kolaborasi Riset</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif text-ink tracking-tight">
+        Menjaga Jejak, Merawat Sejarah Lereng
+      </h2>
+      <p class="text-sm md:text-base font-serif text-ink/80 leading-relaxed">
+        {proyek.ajakan_eksplorasi}
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-sans">
+        <button
+          type="button"
+          data-open-ref-drawer
+          class="min-h-[40px] px-5 py-2.5 bg-ink text-ground hover:bg-accent focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-200 cursor-pointer rounded-sm"
+        >
+          Buka Seluruh Referensi & Sumber (6 Rujukan) ↗
+        </button>
+        <a
+          href="#bab-0"
+          class="min-h-[40px] px-5 py-2.5 border border-line text-ink hover:bg-surface transition-all duration-200 cursor-pointer rounded-sm inline-flex items-center"
+        >
+          Kembali ke Awal ↑
+        </a>
+      </div>
+    </div>
+
+    <!-- Institutional Credits Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 border-b border-line/60">
+      <div class="space-y-2">
+        <span class="text-xs font-sans tracking-wider uppercase text-accent font-medium">Pemilik Konten & Kurasi Historis</span>
+        <h3 class="text-lg font-serif text-ink">{proyek.kredit.fib.institusi}</h3>
+        <p class="text-xs font-sans text-muted">{proyek.kredit.fib.program}</p>
+        <p class="text-xs font-sans text-ink/80 pt-1 leading-relaxed">
+          {proyek.kredit.fib.peran}
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-xs font-sans tracking-wider uppercase text-accent font-medium">Rekayasa Digital & Arsitektur Desain</span>
+        <h3 class="text-lg font-serif text-ink">{proyek.kredit.fasilkom.institusi}</h3>
+        <p class="text-xs font-sans text-muted">{proyek.kredit.fasilkom.program}</p>
+        <p class="text-xs font-sans text-ink/80 pt-1 leading-relaxed">
+          {proyek.kredit.fasilkom.peran}
+        </p>
+      </div>
+    </div>
+
+    <!-- Final Colophon Line -->
+    <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] font-sans text-muted">
+      <div>
+        <span>{proyek.judul} · Versi {proyek.versi} (Astro Statis)</span>
+        <span class="mx-2">·</span>
+        <span>Aksesibilitas WCAG 2.2 AA</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Kontras AA Lolos</span>
+        <span>·</span>
+        <span>Bebas Pelacak Pihak Ketiga</span>
+      </div>
+    </div>
+  </div>
+</footer>
+

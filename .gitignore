@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Production build outputs
+dist/
+
+# Astro generated cache & runtime types
+.astro/
+
+# Jury audit reports, screenshots & browser test evidence
+.jury/
+
+# Environment files & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & IDE configurations
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini

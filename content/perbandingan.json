@@ -1,0 +1,72 @@
+{
+  "judul": "Perbandingan Karakteristik Dua Perkebunan",
+  "keterangan": "Perbandingan data kedua perkebunan berdasarkan naskah kurasi FIB untuk memahami perubahan penguasaan lahan, komoditas, sistem kerja, dan kehidupan sosial masyarakat perkebunan di Jember.",
+  "aspek": [
+    {
+      "id": "lokasi",
+      "nama": "Lokasi Administratif",
+      "kali_jompo": "Desa Klungkung, Kecamatan Sukorambi, Kabupaten Jember (Lereng Gunung Hyang Argopuro)",
+      "kali_jompo_sumber_ids": ["izzah-2020"],
+      "sumber_tenggulun": "Desa Manggisan, Kecamatan Tanggul, Kabupaten Jember (Wilayah Jember bagian barat)",
+      "sumber_tenggulun_sumber_ids": ["linda-hgu"],
+      "status": "bersumber"
+    },
+    {
+      "id": "fokus_sejarah",
+      "nama": "Fokus Kajian Sejarah",
+      "kali_jompo": "Perkebunan kolonial, riwayat perusahaan kopi, dinamika buruh, dan perkebunan kopi rakyat Klungkung",
+      "kali_jompo_sumber_ids": ["izzah-2020", "fitriyah-2025"],
+      "sumber_tenggulun": "Sejarah penguasaan lahan, perubahan pengelolaan perkebunan, diversifikasi komoditas, dan hubungan dengan masyarakat sekitar",
+      "sumber_tenggulun_sumber_ids": ["sukron-perkebunan"],
+      "status": "bersumber"
+    },
+    {
+      "id": "komoditas",
+      "nama": "Komoditas dalam Sumber Awal",
+      "kali_jompo": "Kopi dan Karet",
+      "kali_jompo_sumber_ids": ["izzah-2020"],
+      "sumber_tenggulun": "Kopi, Karet, dan Kakao (perlu konfirmasi arsip)",
+      "sumber_tenggulun_sumber_ids": ["sel-1994"],
+      "status": "perlu_pemeriksaan",
+      "catatan": "Komoditas kakao pada Sumber Tenggulun masih memerlukan konfirmasi sumber primer."
+    },
+    {
+      "id": "sumber_pengembangan",
+      "nama": "Sumber yang Perlu Dikembangkan",
+      "kali_jompo": "Buku sejarah kopi Klungkung, arsip perusahaan Hindia Belanda, dan penelitian buruh",
+      "kali_jompo_sumber_ids": ["izzah-2020", "colonial-business-1890"],
+      "sumber_tenggulun": "Dokumen HGU, arsip perusahaan, laporan perkebunan, dan laporan evaluasi lingkungan",
+      "sumber_tenggulun_sumber_ids": ["linda-hgu", "sel-1994"],
+      "status": "bersumber"
+    },
+    {
+      "id": "keberlanjutan",
+      "nama": "Potensi Keberlanjutan & Sosial",
+      "kali_jompo": "Perkebunan rakyat, pengelolaan lahan lereng pegunungan, dan taraf hidup petani lokal",
+      "kali_jompo_sumber_ids": ["izzah-2020", "fitriyah-2025"],
+      "sumber_tenggulun": "Perubahan penggunaan lahan, diversifikasi komoditas perkebunan, dan interaksi tenaga kerja lokal",
+      "sumber_tenggulun_sumber_ids": ["sukron-perkebunan"],
+      "status": "bersumber"
+    },
+    {
+      "id": "luas_lahan",
+      "nama": "Luas Lahan Terdata",
+      "kali_jompo": "524 hektare (keterangan hak erfpacht 1884; luas kebun kopi spesifik: [ISI DARI FIB])",
+      "kali_jompo_sumber_ids": ["izzah-2020"],
+      "sumber_tenggulun": "Angka luas keseluruhan dan luas khusus kopi masih perlu pemeriksaan arsip [ISI DARI FIB]",
+      "sumber_tenggulun_sumber_ids": ["linda-hgu"],
+      "status": "perlu_pemeriksaan",
+      "catatan": "Luas keseluruhan perkebunan harus dibedakan dari luas lahan khusus tanaman kopi. Setiap angka wajib memiliki tahun, satuan, dan rujukan dokumen."
+    },
+    {
+      "id": "data_produksi",
+      "nama": "Volume Produksi Kopi",
+      "kali_jompo": "Data deret waktu produksi belum tersedia [ISI DARI FIB]",
+      "kali_jompo_sumber_ids": [],
+      "sumber_tenggulun": "Data deret waktu produksi belum tersedia [ISI DARI FIB]",
+      "sumber_tenggulun_sumber_ids": [],
+      "status": "perlu_pemeriksaan",
+      "catatan": "Data produksi perlu disertai tahun panen, satuan metrik, dan sumber arsip resmi."
+    }
+  ]
+}

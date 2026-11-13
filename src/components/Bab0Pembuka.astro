@@ -1,0 +1,98 @@
+---
+import { proyek } from '../lib/content';
+import MediaPlaceholder from './MediaPlaceholder.astro';
+---
+
+<header id="bab-0" class="relative min-h-[92vh] flex flex-col justify-between pt-24 pb-12 px-4 md:px-8 max-w-6xl mx-auto">
+  <!-- Top Meta / Project Colophon Line -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-line text-xs font-sans text-muted">
+    <div class="flex items-center gap-3">
+      <span class="tracking-widest uppercase font-medium text-accent">DOKUMENTASI DIGITAL SEJARAH PERKEBUNAN</span>
+      <span class="text-secondary font-bold">/</span>
+      <span class="tabular">VERSI {proyek.versi}</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a
+        href="#bab-1"
+        class="min-h-[32px] inline-flex items-center text-xs font-sans text-muted hover:text-ink border-b border-line hover:border-ink transition-colors"
+      >
+        Lewati Pengantar ↓
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Content & Dynamic Contour Vector -->
+  <div class="my-auto py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <!-- Left Column: Typographic Monument -->
+    <div class="lg:col-span-7 space-y-6">
+      <div class="inline-block">
+        <span class="text-xs md:text-sm font-sans tracking-widest uppercase text-muted block mb-2">
+          {proyek.subjudul}
+        </span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-ink tracking-tight leading-[0.95]">
+          {proyek.judul}
+        </h1>
+      </div>
+
+      <!-- Hero Contour Sketch (SVG self-drawing) -->
+      <div class="w-full max-w-md py-2 overflow-hidden" aria-hidden="true">
+        <svg viewBox="0 0 400 60" fill="none" class="w-full h-12">
+          <path
+            class="hero-contour-draw"
+            d="M 0,45 C 80,10 150,55 240,20 C 310,-5 360,40 400,25"
+            stroke="var(--color-contour)"
+            stroke-width="1.5"
+            stroke-dasharray="500"
+            stroke-dashoffset="0"
+          />
+          <path
+            class="hero-contour-draw-sec"
+            d="M 0,55 C 90,25 160,58 250,35 C 320,15 370,48 400,38"
+            stroke="var(--color-line)"
+            stroke-width="1"
+            stroke-dasharray="500"
+            stroke-dashoffset="0"
+            stroke-opacity="0.7"
+          />
+        </svg>
+      </div>
+
+      <p class="text-base sm:text-lg font-serif text-ink/90 leading-relaxed max-w-xl">
+        {proyek.ringkasan}
+      </p>
+
+      <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed max-w-xl">
+        {proyek.narasi_pengantar}
+      </p>
+
+      <div class="pt-4 flex items-center gap-6 text-xs font-sans">
+        <a
+          href="#bab-1"
+          class="min-h-[36px] inline-flex items-center gap-2 text-ink font-medium border-b border-ink pb-0.5 hover:text-accent hover:border-accent transition-colors"
+        >
+          <span>Telusuri Jejak Lereng</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <button
+          type="button"
+          data-open-ref-drawer
+          class="min-h-[36px] inline-flex items-center text-muted hover:text-ink border-b border-line hover:border-ink transition-colors pb-0.5 cursor-pointer"
+        >
+          Buka Daftar Referensi
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Column: Hero Aspect Ratio Placeholder -->
+    <div class="lg:col-span-5">
+      <MediaPlaceholder id="hero-lereng" showCaption={true} />
+    </div>
+  </div>
+
+  <!-- Bottom Hero Status Bar -->
+  <div class="pt-6 border-t border-line/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] font-sans text-muted">
+    <span>Kajian Lapangan: Lereng Argopuro (Sukorambi & Tanggul)</span>
+    <span class="italic">Naskah sejarah bersumber tunggal dari kurasi FIB UNEJ</span>
+  </div>
+</header>
+

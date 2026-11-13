@@ -1,0 +1,31 @@
+[
+  {
+    "id": "kali-jompo",
+    "nama": "Perkebunan Kali Jompo",
+    "desa": "Desa Klungkung",
+    "kecamatan": "Kecamatan Sukorambi",
+    "kabupaten": "Kabupaten Jember",
+    "lereng": "Lereng Gunung Hyang Argopuro",
+    "ringkasan": "Perkebunan kopi dan karet di lereng Argopuro yang memiliki riwayat hak erfpacht sejak 1884 dan pendirian Kalie Djompo Cultuur pada 1890, serta berkembang menjadi perkebunan kopi rakyat dan pusat kehidupan buruh.",
+    "komoditas_awal": ["Kopi", "Karet"],
+    "status_data": "bersumber",
+    "koordinat": null,
+    "posisi_skematik": "Timur",
+    "catatan_posisi": "Posisi skematis pada ilustrasi kontur, bukan koordinat definitif."
+  },
+  {
+    "id": "sumber-tenggulun",
+    "nama": "Perkebunan Sumber Tenggulun",
+    "desa": "Desa Manggisan",
+    "kecamatan": "Kecamatan Tanggul",
+    "kabupaten": "Kabupaten Jember",
+    "lereng": "Jember bagian barat",
+    "ringkasan": "Lokasi pembanding perkebunan di wilayah Jember bagian barat dengan catatan komoditas kopi, karet, dan kakao, yang riwayat penguasaan lahan dan HGU-nya masih memerlukan verifikasi arsip lanjutan.",
+    "komoditas_awal": ["Kopi", "Karet", "Kakao"],
+    "status_data": "perlu_pemeriksaan",
+    "koordinat": null,
+    "posisi_skematik": "Barat",
+    "catatan_posisi": "Posisi skematis pada ilustrasi kontur, bukan koordinat definitif."
+  }
+]
+

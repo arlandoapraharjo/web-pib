@@ -1,0 +1,36 @@
+---
+interface Props {
+  label?: string;
+  elevasi?: string;
+  class?: string;
+}
+
+const { label, elevasi, class: className = '' } = Astro.props;
+---
+
+<div class={`relative w-full py-8 md:py-12 flex items-center justify-center overflow-hidden ${className}`}>
+  <div class="w-full max-w-6xl mx-auto px-4 md:px-8 flex items-center gap-4">
+    <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-line/40 to-line"></div>
+    
+    <div class="flex items-center gap-2 shrink-0 text-muted">
+      <svg width="48" height="18" viewBox="0 0 48 18" fill="none" class="opacity-70">
+        <path
+          d="M0 9 C 12 2, 24 16, 36 9 C 42 5, 45 7, 48 9"
+          stroke="var(--color-contour)"
+          stroke-width="1.2"
+        />
+        <path
+          d="M0 13 C 14 6, 26 18, 38 12 C 43 9, 46 11, 48 13"
+          stroke="var(--color-line)"
+          stroke-width="0.8"
+          stroke-opacity="0.6"
+        />
+      </svg>
+      {label && <span class="text-[11px] font-sans tracking-widest uppercase text-muted/80">{label}</span>}
+      {elevasi && <span class="text-[10px] font-sans text-secondary font-medium tabular">({elevasi})</span>}
+    </div>
+
+    <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent via-line/40 to-line"></div>
+  </div>
+</div>
+

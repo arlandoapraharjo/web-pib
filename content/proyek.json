@@ -1,0 +1,22 @@
+{
+  "judul": "Jejak Kopi Jember",
+  "subjudul": "Sejarah Perkebunan Kopi Kali Jompo dan Sumber Tenggulun",
+  "kolaborasi": "Fakultas Ilmu Komputer × Fakultas Ilmu Budaya Universitas Jember",
+  "versi": "0.2 (Prototipe Tampilan)",
+  "ringkasan": "Proyek Jejak Kopi Jember mendokumentasikan sejarah perkebunan kopi di Kabupaten Jember, khususnya Perkebunan Kali Jompo di Desa Klungkung, Kecamatan Sukorambi, dan Perkebunan Sumber Tenggulun di Desa Manggisan, Kecamatan Tanggul.",
+  "narasi_pengantar": "Menghubungkan sejarah perkebunan kolonial dengan perkembangan ekonomi masyarakat, kehidupan buruh, perubahan penggunaan lahan, serta ketahanan pertanian lereng pegunungan.",
+  "ajakan_eksplorasi": "Telusuri jejak lereng dan arsip sejarah melalui garis waktu, data komparatif, dan penelusuran spasial skematis.",
+  "kredit": {
+    "fib": {
+      "institusi": "Fakultas Ilmu Budaya Universitas Jember",
+      "program": "Program Studi Ilmu Sejarah",
+      "peran": "Penelusuran sumber sejarah, kurasi arsip, verifikasi keakuratan informasi, dan penyusunan narasi historis."
+    },
+    "fasilkom": {
+      "institusi": "Fakultas Ilmu Komputer Universitas Jember",
+      "program": "Teknologi Informasi & Sistem Informasi",
+      "peran": "Arsitektur informasi, desain antarmuka scrollytelling, rekayasa interaksi gerak, dan performa aksesibilitas web."
+    }
+  }
+}
+

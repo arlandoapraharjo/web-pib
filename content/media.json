@@ -1,0 +1,256 @@
+[
+  {
+    "id": "hero-lereng",
+    "bab": 0,
+    "rasio": "16:9",
+    "alt": "Lanskap lereng Gunung Hyang Argopuro atau perkebunan kopi",
+    "keterangan": "Foto: lanskap lereng Argopuro atau hamparan kebun kopi saat pagi berkabut.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "kj-kebun",
+    "bab": 2,
+    "rasio": "4:3",
+    "alt": "Bentang alam perkebunan kopi dan karet Kali Jompo di Desa Klungkung",
+    "keterangan": "Foto: kebun kopi dan tegakan pohon karet Kali Jompo di lereng Sukorambi.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "kj-bangunan",
+    "bab": 2,
+    "rasio": "3:2",
+    "alt": "Bangunan kantor atau fasilitas perkebunan Kali Jompo",
+    "keterangan": "Foto: kantor administrasi atau peninggalan fasilitas perkebunan Kali Jompo (bila ada izin publikasi).",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "kj-arsip",
+    "bab": 2,
+    "rasio": "4:5",
+    "alt": "Reproduksi dokumen atau peta lama terkait erfpacht Petoengroto/Kalidjompo 1884",
+    "keterangan": "Dokumen arsip: peta atau lembar register hak erfpacht 1884 (hanya arsip berizin).",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "kj-pengolahan",
+    "bab": 2,
+    "rasio": "3:2",
+    "alt": "Aktivitas pengolahan kopi rakyat di Desa Klungkung",
+    "keterangan": "Foto: proses pengolahan basah atau penjemuran kopi rakyat di Desa Klungkung.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "st-kebun",
+    "bab": 3,
+    "rasio": "4:3",
+    "alt": "Lanskap perkebunan Sumber Tenggulun di Desa Manggisan Tanggul",
+    "keterangan": "Foto: lanskap kebun Sumber Tenggulun di wilayah Jember bagian barat.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "st-fasilitas",
+    "bab": 3,
+    "rasio": "3:2",
+    "alt": "Fasilitas pengolahan atau kantor kebun Sumber Tenggulun",
+    "keterangan": "Foto: kantor afdeling atau fasilitas kebun Sumber Tenggulun.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "st-dokumen",
+    "bab": 3,
+    "rasio": "4:5",
+    "alt": "Dokumen HGU atau lembar laporan studi lingkungan Sumber Tenggulun",
+    "keterangan": "Dokumen arsip: salinan berkas HGU atau laporan teknis terkait Sumber Tenggulun (hanya yang boleh dipublikasikan).",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "sosial-buruh",
+    "bab": 6,
+    "rasio": "3:2",
+    "alt": "Aktivitas buruh kebun kopi Kali Jompo",
+    "keterangan": "Foto dokumentasi: aktivitas harian pekerja dan buruh petik kebun.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "sosial-petani",
+    "bab": 6,
+    "rasio": "4:5",
+    "alt": "Potret petani kopi rakyat",
+    "keterangan": "Foto potret: petani kopi rakyat Desa Klungkung (dengan persetujuan tertulis).",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "sosial-wawancara",
+    "bab": 6,
+    "rasio": "3:2",
+    "alt": "Suasana wawancara tim peneliti sejarah bersama warga kebun",
+    "keterangan": "Foto dokumentasi: proses wawancara sejarah lisan tim peneliti FIB bersama informan lokal.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-01",
+    "bab": 7,
+    "rasio": "4:3",
+    "alt": "Peta historis pembagian perkebunan kolonial Jember",
+    "keterangan": "Arsip peta: pemetaan wilayah perkebunan Karesidenan Besuki.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-02",
+    "bab": 7,
+    "rasio": "16:9",
+    "alt": "Panorama perkebunan lereng Argopuro masa kini",
+    "keterangan": "Foto: bentang alam lereng pegunungan Hyang Argopuro dari ketinggian.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-03",
+    "bab": 7,
+    "rasio": "3:2",
+    "alt": "Pekerja pemeliharaan tanaman kopi di Kali Jompo",
+    "keterangan": "Foto: pemeliharaan tanaman kopi di bawah naungan pohon pelindung.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-04",
+    "bab": 7,
+    "rasio": "1:1",
+    "alt": "Arsip cap stempel perusahaan Kalie Djompo Cultuur 1890",
+    "keterangan": "Dokumen: tanda register atau dokumen perusahaan Kalie Djompo Cultuur.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-05",
+    "bab": 7,
+    "rasio": "4:5",
+    "alt": "Lembar hak erfpacht Petoengroto/Kalidjompo 1884",
+    "keterangan": "Arsip tertulis: kutipan penetapan hak erfpacht 29 September 1884.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-06",
+    "bab": 7,
+    "rasio": "3:2",
+    "alt": "Bangunan tua sisa instalasi pengolahan masa kolonial",
+    "keterangan": "Foto: struktur fondasi atau saluran air peninggalan instalasi perkebunan lama.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-07",
+    "bab": 7,
+    "rasio": "4:3",
+    "alt": "Biji kopi hasil panen rakyat Klungkung",
+    "keterangan": "Foto: buah kopi merah petik matang hasil kebun rakyat Klungkung.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-08",
+    "bab": 7,
+    "rasio": "3:2",
+    "alt": "Kondisi jalan setapak menuju perkebunan Sumber Tenggulun",
+    "keterangan": "Foto: jalur transportasi dan akses kebun di Desa Manggisan Tanggul.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-09",
+    "bab": 7,
+    "rasio": "4:5",
+    "alt": "Dokumentasi wawancara dengan tokoh sesepuh buruh kebun",
+    "keterangan": "Foto dokumentasi: wawancara lisan mengenai kondisi kerja buruh perkebunan.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-10",
+    "bab": 7,
+    "rasio": "16:9",
+    "alt": "Pemandangan batas kebun Sumber Tenggulun dan pemukiman",
+    "keterangan": "Foto: perbatasan kawasan kebun Sumber Tenggulun dengan lahan garapan masyarakat.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-11",
+    "bab": 7,
+    "rasio": "1:1",
+    "alt": "Peralatan sortasi kopi tradisional",
+    "keterangan": "Foto: tampah bambu dan alat pemilah biji kopi tradisional masyarakat lereng.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  },
+  {
+    "id": "galeri-12",
+    "bab": 7,
+    "rasio": "3:2",
+    "alt": "Tim riset gabungan saat survei lapangan di perkebunan",
+    "keterangan": "Foto: dokumentasi tim peneliti FIB UNEJ saat melakukan penelusuran lapangan.",
+    "sumber": "[ISI DARI FIB]",
+    "lisensi": "[ISI DARI FIB]",
+    "status_izin": "menunggu_berkas",
+    "berkas": null
+  }
+]
+

@@ -1,0 +1,172 @@
+---
+import { sumber } from '../lib/content';
+---
+
+<!-- Popover / Bottom Sheet Container -->
+<div
+  id="ref-popover-backdrop"
+  class="fixed inset-0 bg-ink/20 backdrop-blur-[1px] z-50 opacity-0 pointer-events-none transition-opacity duration-200"
+  aria-hidden="true"
+></div>
+
+<div
+  id="ref-popover"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="ref-popover-title"
+  class="fixed z-50 opacity-0 pointer-events-none transition-all duration-200 bg-surface border border-line p-5 shadow-sm max-w-md w-[calc(100vw-2rem)] md:w-96 text-left"
+  style="border-radius: var(--radius-sm);"
+>
+  <div class="flex items-start justify-between gap-3 pb-3 border-b border-line/40">
+    <div>
+      <span id="ref-popover-type" class="text-[11px] font-sans tracking-wide text-muted uppercase">Jenis Sumber</span>
+      <span id="ref-popover-status" class="ml-2 text-[11px] font-sans px-1.5 py-0.5 border">Status</span>
+    </div>
+    <button
+      type="button"
+      id="ref-popover-close"
+      class="text-muted hover:text-ink text-xs font-sans px-1.5 py-0.5 border border-line/50 hover:border-ink transition-colors"
+      aria-label="Tutup panel referensi"
+    >
+      Esc ×
+    </button>
+  </div>
+
+  <div class="mt-3 space-y-2">
+    <p id="ref-popover-penulis" class="text-xs font-sans font-medium text-ink"></p>
+    <h4 id="ref-popover-title" class="text-sm font-serif italic text-ink leading-snug"></h4>
+    <p id="ref-popover-penerbit" class="text-xs font-sans text-muted"></p>
+    <p id="ref-popover-halaman" class="text-xs font-sans text-muted tabular"></p>
+    <p id="ref-popover-catatan" class="text-xs font-sans text-muted/90 pt-2 border-t border-line/30 italic"></p>
+  </div>
+
+  <div class="mt-4 pt-3 border-t border-line/40 flex items-center justify-between">
+    <a
+      id="ref-popover-url"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-xs font-sans font-medium text-accent hover:text-ink inline-flex items-center gap-1 border-b border-accent/40 hover:border-ink transition-colors"
+    >
+      <span>Buka dokumen sumber</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+    <span class="text-[10px] font-sans text-muted">Koleksi Kurasi FIB UNEJ</span>
+  </div>
+</div>
+
+<script is:inline define:vars={{ sumberList: sumber }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const popover = document.getElementById('ref-popover');
+    const backdrop = document.getElementById('ref-popover-backdrop');
+    const closeBtn = document.getElementById('ref-popover-close');
+    const titleEl = document.getElementById('ref-popover-title');
+    const typeEl = document.getElementById('ref-popover-type');
+    const statusEl = document.getElementById('ref-popover-status');
+    const penulisEl = document.getElementById('ref-popover-penulis');
+    const penerbitEl = document.getElementById('ref-popover-penerbit');
+    const halamanEl = document.getElementById('ref-popover-halaman');
+    const catatanEl = document.getElementById('ref-popover-catatan');
+    const urlEl = document.getElementById('ref-popover-url');
+
+    let activeTrigger = null;
+
+    function openRef(id, triggerEl) {
+      const item = sumberList.find((s) => s.id === id);
+      if (!item || !popover) return;
+
+      activeTrigger = triggerEl;
+      if (triggerEl) triggerEl.setAttribute('aria-expanded', 'true');
+
+      titleEl.textContent = item.judul;
+      typeEl.textContent = item.jenis || 'Dokumen Sumber';
+      penulisEl.textContent = `${item.penulis} (${item.tahun})`;
+      penerbitEl.textContent = item.penerbit ? `Penerbit: ${item.penerbit}` : '';
+      halamanEl.textContent = item.halaman ? `Halaman: ${item.halaman}` : 'Halaman: [ISI DARI FIB]';
+      catatanEl.textContent = item.catatan || '';
+
+      if (item.status === 'bersumber') {
+        statusEl.textContent = 'Bersumber';
+        statusEl.className = 'ml-2 text-[11px] font-sans px-1.5 py-0.5 border border-accent/60 text-accent';
+      } else {
+        statusEl.textContent = 'Perlu Pemeriksaan';
+        statusEl.className = 'ml-2 text-[11px] font-sans px-1.5 py-0.5 border border-line text-muted border-dashed';
+      }
+
+      if (item.url) {
+        urlEl.href = item.url;
+        urlEl.style.display = 'inline-flex';
+      } else {
+        urlEl.style.display = 'none';
+      }
+
+      // Responsive positioning: Bottom sheet on mobile (<768px), Popover on desktop
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        popover.style.left = '1rem';
+        popover.style.right = '1rem';
+        popover.style.bottom = '1rem';
+        popover.style.top = 'auto';
+        popover.style.transform = 'translateY(0)';
+      } else if (triggerEl) {
+        const rect = triggerEl.getBoundingClientRect();
+        const popoverWidth = 384; // 24rem
+        let left = rect.left + window.scrollX;
+        let top = rect.bottom + window.scrollY + 8;
+
+        // Keep inside viewport horizontally
+        if (left + popoverWidth > window.innerWidth - 20) {
+          left = window.innerWidth - popoverWidth - 20;
+        }
+        if (left < 20) left = 20;
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+        popover.style.bottom = 'auto';
+        popover.style.right = 'auto';
+        popover.style.transform = 'none';
+      }
+
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      popover.classList.remove('opacity-0', 'pointer-events-none');
+      popover.classList.add('opacity-100', 'pointer-events-auto');
+
+      closeBtn?.focus();
+    }
+
+    function closeRef() {
+      if (!popover) return;
+      popover.classList.remove('opacity-100', 'pointer-events-auto');
+      popover.classList.add('opacity-0', 'pointer-events-none');
+      backdrop?.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
+
+      if (activeTrigger) {
+        activeTrigger.setAttribute('aria-expanded', 'false');
+        activeTrigger.focus();
+        activeTrigger = null;
+      }
+    }
+
+    // Attach click listener to all .ref-marker
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('.ref-marker');
+      if (target) {
+        e.preventDefault();
+        const id = target.getAttribute('data-ref-id');
+        openRef(id, target);
+      }
+    });
+
+    closeBtn?.addEventListener('click', closeRef);
+    backdrop?.addEventListener('click', closeRef);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popover?.classList.contains('pointer-events-none')) {
+        closeRef();
+      }
+    });
+  });
+</script>
+

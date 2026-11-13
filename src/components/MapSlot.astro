@@ -1,0 +1,213 @@
+---
+import type { Lokasi } from '../lib/content';
+
+interface Props {
+  lokasi: Lokasi[];
+  modelUrl?: string | null;
+}
+
+const { lokasi, modelUrl = null } = Astro.props;
+const kj = lokasi.find((l) => l.id === 'kali-jompo');
+const st = lokasi.find((l) => l.id === 'sumber-tenggulun');
+---
+
+<div
+  class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] border border-line bg-surface overflow-hidden flex flex-col justify-between"
+  style="border-radius: var(--radius-sm);"
+  id="mapslot-root"
+>
+  <!-- Top Slot Meta Bar -->
+  <div class="relative z-20 p-4 md:p-6 flex items-start justify-between text-xs font-sans text-muted">
+    <div>
+      <span class="text-[10px] tracking-widest uppercase text-accent font-medium">SLOT SPASIAL ELEVASI</span>
+      <h3 class="text-sm md:text-base font-serif text-ink mt-0.5">Topografi Skematis Lereng Pegunungan Argopuro</h3>
+    </div>
+    <div class="text-right">
+      <span class="text-[10px] tracking-wider uppercase border border-line px-2 py-0.5 text-muted">Peta 3D Menyusul</span>
+      <p class="text-[11px] text-muted/70 mt-1">Status koordinat: Menunggu verifikasi GPS</p>
+    </div>
+  </div>
+
+  <!-- SVG Contour Drawing Canvas -->
+  <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none opacity-80">
+    <svg
+      viewBox="0 0 1000 600"
+      class="w-full h-full object-cover"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="var(--color-line)" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="var(--color-contour)" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="var(--color-line)" stop-opacity="0.3" />
+        </linearGradient>
+      </defs>
+
+      <!-- Ridge Contour Lines (Simulating Argopuro altitude layers) -->
+      <path
+        class="contour-line"
+        d="M -50,550 C 200,520 350,480 500,470 C 650,460 800,510 1050,540"
+        stroke="var(--color-line)"
+        stroke-width="1"
+        stroke-opacity="0.5"
+      />
+      <path
+        class="contour-line"
+        d="M -50,480 C 180,450 320,390 500,380 C 680,370 820,430 1050,460"
+        stroke="var(--color-contour)"
+        stroke-width="1.2"
+        stroke-opacity="0.6"
+      />
+      <path
+        class="contour-line"
+        d="M -50,410 C 150,370 300,310 500,300 C 700,290 850,350 1050,390"
+        stroke="var(--color-line)"
+        stroke-width="1"
+        stroke-opacity="0.5"
+      />
+      <path
+        class="contour-line"
+        d="M -50,340 C 200,290 350,220 500,210 C 650,200 800,270 1050,310"
+        stroke="var(--color-contour)"
+        stroke-width="1.5"
+        stroke-opacity="0.8"
+      />
+      <path
+        class="contour-line"
+        d="M -50,270 C 180,210 320,150 500,140 C 680,130 820,190 1050,240"
+        stroke="var(--color-line)"
+        stroke-width="1.2"
+        stroke-opacity="0.6"
+      />
+      <!-- Peak Contours -->
+      <path
+        class="contour-line"
+        d="M 150,220 C 300,140 400,90 500,85 C 600,80 700,130 850,200"
+        stroke="var(--color-accent)"
+        stroke-width="1.5"
+        stroke-opacity="0.7"
+      />
+      <path
+        class="contour-line"
+        d="M 320,130 C 400,80 460,50 500,48 C 540,46 600,75 680,120"
+        stroke="var(--color-contour)"
+        stroke-width="1.2"
+        stroke-opacity="0.5"
+      />
+
+      <!-- Grid Coordinate Ticks -->
+      <g stroke="var(--color-line)" stroke-opacity="0.25" stroke-width="0.5">
+        <line x1="200" y1="0" x2="200" y2="600" stroke-dasharray="4 6" />
+        <line x1="400" y1="0" x2="400" y2="600" stroke-dasharray="4 6" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke-dasharray="4 6" />
+        <line x1="800" y1="0" x2="800" y2="600" stroke-dasharray="4 6" />
+        <line x1="0" y1="150" x2="1000" y2="150" stroke-dasharray="4 6" />
+        <line x1="0" y1="300" x2="1000" y2="300" stroke-dasharray="4 6" />
+        <line x1="0" y1="450" x2="1000" y2="450" stroke-dasharray="4 6" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Interactive Schematic Marker: Sisi Barat (Sumber Tenggulun) -->
+  <div class="absolute top-[48%] left-[12%] sm:left-[18%] md:left-[22%] z-30">
+    <button
+      type="button"
+      class="group flex flex-col items-start text-left focus:outline-none cursor-pointer"
+      data-select-location="sumber-tenggulun"
+      aria-label="Sumber Tenggulun (Desa Manggisan, Tanggul)"
+    >
+      <div class="flex items-center gap-2">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-contour opacity-40"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-contour border border-ground"></span>
+        </span>
+        <span class="text-xs font-sans font-medium text-ink group-hover:text-contour transition-colors">
+          Sumber Tenggulun
+        </span>
+      </div>
+      <div class="mt-1 pl-5 text-[11px] font-sans text-muted">
+        <p>Desa Manggisan, Tanggul</p>
+        <span class="inline-block mt-0.5 text-[10px] text-muted border-b border-dashed border-line">
+          Posisi Skematis Barat
+        </span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Interactive Schematic Marker: Sisi Timur (Kali Jompo) -->
+  <div class="absolute top-[38%] right-[10%] sm:right-[16%] md:right-[20%] z-30">
+    <button
+      type="button"
+      class="group flex flex-col items-end text-right focus:outline-none cursor-pointer"
+      data-select-location="kali-jompo"
+      aria-label="Kali Jompo (Desa Klungkung, Sukorambi)"
+    >
+      <div class="flex items-center gap-2 flex-row-reverse">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-accent border border-ground"></span>
+        </span>
+        <span class="text-xs font-sans font-medium text-ink group-hover:text-accent transition-colors">
+          Kali Jompo
+        </span>
+      </div>
+      <div class="mt-1 pr-5 text-[11px] font-sans text-muted">
+        <p>Desa Klungkung, Sukorambi</p>
+        <span class="inline-block mt-0.5 text-[10px] text-accent border-b border-accent/40">
+          Posisi Skematis Timur
+        </span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Bottom Bar: Ethical Watermark & Location Details Drawer Trigger -->
+  <div class="relative z-20 p-4 md:p-6 border-t border-line/40 bg-surface/80 backdrop-blur-[2px] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-sans text-muted">
+    <div class="flex items-center gap-2 text-[11px]">
+      <span class="inline-block w-2 h-2 rounded-full bg-line"></span>
+      <p class="italic text-muted/90">
+        Catatan: Ilustrasi garis kontur skematis untuk orientasi lereng, bukan koordinat GPS.
+      </p>
+    </div>
+
+    <!-- Active Selection Info Pill / Card -->
+    <div id="map-location-card" class="text-xs font-sans text-ink flex items-center gap-3">
+      <span id="map-card-text" class="text-[11px] text-muted">Pilih penanda kebun di atas untuk profil ringkas</span>
+      <button
+        type="button"
+        id="map-card-action"
+        class="hidden text-xs text-accent font-medium border-b border-accent hover:border-ink transition-colors"
+      >
+        Selengkapnya di Bab 2/3 ↓
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ lokasiData: lokasi }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('[data-select-location]');
+    const cardText = document.getElementById('map-card-text');
+    const cardAction = document.getElementById('map-card-action');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-select-location');
+        const item = lokasiData.find((l) => l.id === id);
+        if (!item || !cardText) return;
+
+        cardText.innerHTML = `<strong>${item.nama}</strong> (${item.desa}, ${item.kecamatan}) — ${item.ringkasan}`;
+        if (cardAction) {
+          cardAction.classList.remove('hidden');
+          cardAction.textContent = id === 'kali-jompo' ? 'Buka Narasi Kali Jompo (Bab 2) ↓' : 'Buka Narasi Sumber Tenggulun (Bab 3) ↓';
+          cardAction.onclick = () => {
+            const targetId = id === 'kali-jompo' ? 'bab-2' : 'bab-3';
+            document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+          };
+        }
+      });
+    });
+  });
+</script>
+

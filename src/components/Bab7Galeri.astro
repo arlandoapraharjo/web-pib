@@ -1,0 +1,315 @@
+---
+import { mediaList } from '../lib/content';
+import MediaPlaceholder from './MediaPlaceholder.astro';
+import ContourDivider from './ContourDivider.astro';
+
+const galeriSlots = mediaList.filter((m) => m.bab === 7);
+---
+
+<!-- Bab 7: 3D Warp Cylindrical Ring Carousel (Compact archival scale, scroll wheel navigation, Argopuro palette, 0-4px radius) -->
+<section id="bab-7" class="relative w-full py-12 md:py-18 border-t border-line/40 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    
+    <!-- Chapter Header with Wheel Guide & Controls -->
+    <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-line">
+      <div>
+        <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 7 / Khazanah Visual</span>
+        <h2 class="text-2xl sm:text-3xl font-serif text-ink mt-0.5">Galeri Arsip & Dokumentasi Lapangan</h2>
+        <p class="text-xs font-sans text-muted mt-1.5 max-w-xl leading-relaxed">
+          Koleksi kurasi foto lanskap, peta kolonial, dan catatan lapangan lereng Argopuro.
+        </p>
+      </div>
+
+      <!-- Controls: Counter, Scroll Hint & Tactile Buttons (Strict PRD 0-4px radius) -->
+      <div class="flex items-center gap-2.5 self-start md:self-auto text-xs font-sans">
+        <span class="hidden sm:inline-block text-[11px] text-muted border border-line/60 px-2 py-1 rounded-sm">
+          Putar Roda Mouse / Geser ↔
+        </span>
+
+        <button
+          type="button"
+          id="warp-prev"
+          class="min-h-[32px] min-w-[32px] px-2.5 py-1 border border-line text-ink hover:bg-ink hover:text-ground transition-all duration-200 text-xs font-sans flex items-center justify-center cursor-pointer active:scale-95"
+          style="border-radius: var(--radius-sm);"
+          aria-label="Slide galeri sebelumnya"
+        >
+          ←
+        </button>
+        <span id="warp-counter" class="text-xs font-sans text-muted tabular px-1.5 font-medium">
+          1 / {galeriSlots.length}
+        </span>
+        <button
+          type="button"
+          id="warp-next"
+          class="min-h-[32px] min-w-[32px] px-2.5 py-1 border border-line text-ink hover:bg-ink hover:text-ground transition-all duration-200 text-xs font-sans flex items-center justify-center cursor-pointer active:scale-95"
+          style="border-radius: var(--radius-sm);"
+          aria-label="Slide galeri berikutnya"
+        >
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Compact 3D Warp Cylindrical Stage -->
+    <div
+      id="warp-stage"
+      class="relative w-full h-[360px] sm:h-[390px] md:h-[420px] overflow-hidden select-none cursor-grab active:cursor-grabbing focus:outline-none"
+      tabindex="0"
+      role="region"
+      aria-label="Galeri silinder 3D arsip foto"
+    >
+      <!-- Background Ambient Vignette Contour -->
+      <div class="absolute inset-0 pointer-events-none opacity-30 dark:opacity-15 flex items-center justify-center" aria-hidden="true">
+        <div class="w-[440px] h-[200px] border border-dashed border-line/60 rounded-full scale-110"></div>
+      </div>
+
+      <!-- The 3D Rotating Ring of Cards -->
+      <div
+        id="warp-ring"
+        class="relative w-full h-full will-change-transform"
+        style="transform-style: preserve-3d; perspective: 1000px;"
+      >
+        {galeriSlots.map((item, idx) => (
+          <div
+            class="warp-card absolute left-1/2 top-1/2 w-[220px] sm:w-[250px] md:w-[280px] cursor-pointer will-change-transform"
+            style="transform-style: preserve-3d;"
+            data-card-index={idx}
+            role="button"
+            tabindex="0"
+            aria-label={`Lihat ${item.alt}`}
+          >
+            <MediaPlaceholder id={item.id} showCaption={true} />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Architectural Dot Indicator Bar (No rounded-full badge pills) -->
+    <div class="mt-6 flex items-center justify-center gap-1.5" role="group" aria-label="Pilihan slide arsip">
+      {galeriSlots.map((_, idx) => (
+        <button
+          type="button"
+          class="warp-dot-btn min-w-[28px] min-h-[28px] p-1.5 flex items-center justify-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent cursor-pointer"
+          data-dot-index={idx}
+          aria-label={`Buka slide ${idx + 1}`}
+        >
+          <span
+            class={`warp-dot block h-1 transition-all duration-300 pointer-events-none ${idx === 0 ? 'w-6 bg-accent' : 'w-2 bg-line/60'}`}
+            style="border-radius: 1px;"
+          ></span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <ContourDivider label="Arsip & Penutup" />
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stage = document.getElementById('warp-stage');
+    const ring = document.getElementById('warp-ring');
+    const cards = document.querySelectorAll('.warp-card');
+    const prevBtn = document.getElementById('warp-prev');
+    const nextBtn = document.getElementById('warp-next');
+    const counter = document.getElementById('warp-counter');
+    const dotButtons = document.querySelectorAll('.warp-dot-btn');
+
+    if (!stage || !ring || cards.length === 0) return;
+
+    const total = cards.length;
+    const stepAngle = 360 / total; // 45 degrees per card for 8 items
+    let currentIndex = 0;
+    let currentAngle = 0;
+    let radius = 340;
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function computeRadius() {
+      const cardWidth = window.innerWidth < 640 ? 220 : window.innerWidth < 768 ? 250 : 280;
+      const cardHeight = Math.round(cardWidth * (9 / 16)) + 80;
+
+      // Center cards precisely
+      cards.forEach((card) => {
+        card.style.marginLeft = `-${Math.round(cardWidth / 2)}px`;
+        card.style.marginTop = `-${Math.round(cardHeight / 2)}px`;
+      });
+
+      // Cylinder radius: R = (w/2) / tan(PI / total)
+      radius = Math.round((cardWidth * 0.5) / Math.tan(Math.PI / total)) + 15;
+      updateRingTransforms();
+    }
+
+    function updateRingTransforms() {
+      cards.forEach((card, idx) => {
+        const cardAngle = idx * stepAngle;
+        card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px)`;
+      });
+      render();
+    }
+
+    function render(immediate = false) {
+      if (prefersReducedMotion) {
+        ring.style.transition = 'none';
+        ring.style.transform = `translateX(-${currentIndex * 100}%)`;
+        cards.forEach((card, idx) => {
+          card.style.position = 'relative';
+          card.style.transform = 'none';
+          card.style.margin = '0 auto';
+          card.style.display = idx === currentIndex ? 'block' : 'none';
+        });
+      } else {
+        ring.style.transition = immediate ? 'none' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        ring.style.transform = `translateZ(-${radius}px) rotateY(${-currentAngle}deg)`;
+
+        // Adjust card opacities and depth styling
+        cards.forEach((card, idx) => {
+          const cardAngle = idx * stepAngle;
+          let diff = (cardAngle - currentAngle) % 360;
+          if (diff > 180) diff -= 360;
+          if (diff < -180) diff += 360;
+
+          const absDiff = Math.abs(diff);
+          if (absDiff < 25) {
+            // Front facing
+            card.style.opacity = '1';
+            card.style.filter = 'none';
+            card.style.pointerEvents = 'auto';
+            card.style.zIndex = '20';
+          } else if (absDiff < 85) {
+            // Side cards
+            card.style.opacity = '0.7';
+            card.style.filter = 'contrast(0.96)';
+            card.style.pointerEvents = 'auto';
+            card.style.zIndex = '10';
+          } else {
+            // Back cards
+            card.style.opacity = '0.12';
+            card.style.filter = 'blur(1px)';
+            card.style.pointerEvents = 'none';
+            card.style.zIndex = '1';
+          }
+        });
+      }
+
+      if (counter) counter.textContent = `${currentIndex + 1} / ${total}`;
+
+      dotButtons.forEach((btn, idx) => {
+        const dot = btn.querySelector('.warp-dot');
+        if (dot) {
+          if (idx === currentIndex) {
+            dot.className = 'warp-dot block h-1 transition-all duration-300 pointer-events-none w-6 bg-accent';
+          } else {
+            dot.className = 'warp-dot block h-1 transition-all duration-300 pointer-events-none w-2 bg-line/60';
+          }
+        }
+      });
+    }
+
+    function goToIndex(idx) {
+      currentIndex = (idx + total) % total;
+      currentAngle = currentIndex * stepAngle;
+      render();
+    }
+
+    // Controls
+    prevBtn?.addEventListener('click', () => {
+      goToIndex(currentIndex - 1);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      goToIndex(currentIndex + 1);
+    });
+
+    // Dot button clicks
+    dotButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = Number(btn.getAttribute('data-dot-index'));
+        if (!isNaN(idx)) goToIndex(idx);
+      });
+    });
+
+    // Clicking side cards brings them to front
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const idx = Number(card.getAttribute('data-card-index'));
+        if (!isNaN(idx) && idx !== currentIndex) {
+          goToIndex(idx);
+        }
+      });
+    });
+
+    // Keyboard navigation when stage is focused
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        goToIndex(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        goToIndex(currentIndex + 1);
+      }
+    });
+
+    // Mouse Scroll Wheel Navigation on Archive Carousel
+    let wheelAccumulator = 0;
+    let wheelCooldown = false;
+
+    stage.addEventListener('wheel', (e) => {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < 4) return;
+
+      // Allow natural page scroll if user is at boundary and scrolling outward
+      if (currentIndex === 0 && delta < 0) return;
+      if (currentIndex === total - 1 && delta > 0) return;
+
+      // Intercept wheel inside carousel to rotate cards
+      e.preventDefault();
+
+      wheelAccumulator += delta;
+
+      if (!wheelCooldown && Math.abs(wheelAccumulator) >= 30) {
+        if (wheelAccumulator > 0) {
+          goToIndex(currentIndex + 1);
+        } else {
+          goToIndex(currentIndex - 1);
+        }
+        wheelAccumulator = 0;
+        wheelCooldown = true;
+        setTimeout(() => {
+          wheelCooldown = false;
+        }, 200);
+      }
+    }, { passive: false });
+
+    // Pointer / Drag gesture support
+    let isDragging = false;
+    let startX = 0;
+    let startAngle = 0;
+
+    stage.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      startAngle = currentAngle;
+      stage.setPointerCapture(e.pointerId);
+    });
+
+    stage.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      currentAngle = startAngle - dx * 0.25;
+      render(true);
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      const nearestIdx = Math.round(currentAngle / stepAngle);
+      goToIndex(nearestIdx);
+    }
+
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+
+    window.addEventListener('resize', computeRadius, { passive: true });
+    computeRadius();
+  });
+</script>

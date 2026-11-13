@@ -1,0 +1,27 @@
+---
+import { sumber, getSumberById } from '../lib/content';
+
+interface Props {
+  id: string;
+  nomor?: number | string;
+}
+
+const { id, nomor } = Astro.props;
+const dataSumber = getSumberById(id);
+
+// Automatically find index (1-based) if nomor is not explicitly provided
+const autoIndex = sumber.findIndex((s) => s.id === id);
+const label = nomor !== undefined ? nomor : autoIndex !== -1 ? autoIndex + 1 : id;
+const visibleText = `[${label}]`;
+---
+
+<button
+  type="button"
+  class="ref-marker inline-flex items-center justify-center min-w-[28px] min-h-[28px] px-1 py-0.5 mx-0.5 text-xs font-sans font-medium text-accent hover:text-ground hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-all align-super border-b border-line/60 hover:border-accent cursor-pointer rounded-sm"
+  data-ref-id={id}
+  aria-haspopup="dialog"
+  aria-expanded="false"
+  aria-label={`${visibleText} Rujukan: ${dataSumber ? dataSumber.penulis + ' (' + dataSumber.tahun + ')' : id}`}
+>
+  <span class="tabular font-semibold">{visibleText}</span>
+</button>
