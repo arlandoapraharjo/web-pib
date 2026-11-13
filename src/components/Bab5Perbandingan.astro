@@ -4,74 +4,112 @@ import RefMarker from './RefMarker.astro';
 import ContourDivider from './ContourDivider.astro';
 ---
 
+<!-- Bab 5: Side-by-Side Comparative Dossier Cards (Synchronized Hover Rows, Interactive Cross-Reference) -->
 <section id="bab-5" class="relative w-full py-16 md:py-24 border-t border-line/40">
   <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <!-- Chapter Header -->
-    <div class="mb-10">
-      <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 5 / Sintesis Komparatif</span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-ink mt-1">{perbandingan.judul}</h2>
-      <p class="text-xs md:text-sm font-sans text-muted mt-2 max-w-2xl leading-relaxed">
+    
+    <!-- Section Header (Clean, No "Bab" label) -->
+    <div class="mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-ink reveal-text">{perbandingan.judul}</h2>
+      <p class="text-xs md:text-sm font-sans text-muted mt-2 max-w-2xl leading-relaxed reveal-text">
         {perbandingan.keterangan}
       </p>
     </div>
 
-    <!-- Typographic Comparison Table (PRD Section 5 & Lampiran A4) -->
-    <div class="border border-line bg-surface overflow-x-auto" style="border-radius: var(--radius-sm);">
-      <table class="w-full text-left border-collapse min-w-[640px]">
-        <thead>
-          <tr class="border-b border-line bg-surface/90 text-xs font-sans text-muted uppercase tracking-wider">
-            <th class="py-3.5 px-4 md:px-6 w-1/4">Aspek Perbandingan</th>
-            <th class="py-3.5 px-4 md:px-6 w-3/8 border-l border-line/60">
-              <span class="text-ink font-semibold">Kali Jompo</span>
-              <span class="block text-[11px] font-normal normal-case text-muted">Desa Klungkung, Sukorambi</span>
-            </th>
-            <th class="py-3.5 px-4 md:px-6 w-3/8 border-l border-line/60">
-              <span class="text-ink font-semibold">Sumber Tenggulun</span>
-              <span class="block text-[11px] font-normal normal-case text-muted">Desa Manggisan, Tanggul</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-line/40 text-xs font-sans text-ink">
+    <!-- Comparative Split Dossier Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start" id="comparison-split-root">
+      
+      <!-- COLUMN 1: PERKEBUNAN KALI JOMPO (LERENG TIMUR) -->
+      <div class="border border-line/80 bg-surface/70 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xs reveal-card">
+        <!-- Card Header -->
+        <div class="pb-5 border-b border-line flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent inline-block"></span>
+              <h3 class="text-xl sm:text-2xl font-serif text-ink font-bold">Kali Jompo</h3>
+            </div>
+            <p class="text-xs font-sans text-muted mt-1">Desa Klungkung, Kecamatan Sukorambi (Lereng Timur)</p>
+          </div>
+          <span class="text-[11px] font-sans text-accent font-medium bg-ground/80 border border-accent/30 px-2.5 py-1 rounded-full">
+            Data Bersumber
+          </span>
+        </div>
+
+        <!-- Comparative Aspect Rows -->
+        <div class="divide-y divide-line/30 mt-3">
           {perbandingan.aspek.map((item) => (
-            <tr class="hover:bg-ground/50 transition-colors">
-              <td class="py-4 px-4 md:px-6 font-medium text-ink/90 align-top">
-                {item.nama}
-                {item.status === 'perlu_pemeriksaan' && (
-                  <span class="block text-[10px] text-muted border-b border-dashed border-line w-max mt-1">
-                    Perlu Pemeriksaan
-                  </span>
-                )}
-              </td>
-              <td class="py-4 px-4 md:px-6 border-l border-line/40 text-ink/80 align-top leading-relaxed">
+            <div
+              class="comparison-row py-4 transition-all duration-200 rounded-lg px-3 -mx-3 hover:bg-ground/80"
+              data-aspect-id={item.id}
+            >
+              <div class="flex items-center justify-between text-[11px] font-sans text-muted mb-1.5">
+                <span class="font-medium uppercase tracking-wider text-accent">{item.nama}</span>
+              </div>
+              <p class="text-xs sm:text-sm font-sans text-ink/90 leading-relaxed">
                 {item.kali_jompo}
                 {item.kali_jompo_sumber_ids && item.kali_jompo_sumber_ids.map((sId: string) => (
                   <RefMarker id={sId} />
                 ))}
-              </td>
-              <td class="py-4 px-4 md:px-6 border-l border-line/40 text-ink/80 align-top leading-relaxed">
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- COLUMN 2: PERKEBUNAN SUMBER TENGGULUN (JEMBER BARAT) -->
+      <div class="border border-line/80 border-dashed bg-surface/70 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xs reveal-card">
+        <!-- Card Header -->
+        <div class="pb-5 border-b border-line flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-contour inline-block"></span>
+              <h3 class="text-xl sm:text-2xl font-serif text-ink font-bold">Sumber Tenggulun</h3>
+            </div>
+            <p class="text-xs font-sans text-muted mt-1">Desa Manggisan, Kecamatan Tanggul (Jember Barat)</p>
+          </div>
+          <span class="text-[11px] font-sans text-muted italic bg-ground/80 border border-line border-dashed px-2.5 py-1 rounded-full">
+            Perlu Pemeriksaan
+          </span>
+        </div>
+
+        <!-- Comparative Aspect Rows -->
+        <div class="divide-y divide-line/30 mt-3">
+          {perbandingan.aspek.map((item) => (
+            <div
+              class="comparison-row py-4 transition-all duration-200 rounded-lg px-3 -mx-3 hover:bg-ground/80"
+              data-aspect-id={item.id}
+            >
+              <div class="flex items-center justify-between text-[11px] font-sans text-muted mb-1.5">
+                <span class="font-medium uppercase tracking-wider text-contour">{item.nama}</span>
+                {item.status === 'perlu_pemeriksaan' && (
+                  <span class="text-[10px] text-muted italic">Perlu Verifikasi</span>
+                )}
+              </div>
+              <p class="text-xs sm:text-sm font-sans text-ink/90 leading-relaxed">
                 {item.sumber_tenggulun}
                 {item.sumber_tenggulun_sumber_ids && item.sumber_tenggulun_sumber_ids.map((sId: string) => (
                   <RefMarker id={sId} />
                 ))}
-                {item.catatan && (
-                  <span class="block text-[11px] text-muted italic mt-1.5 pt-1 border-t border-line/20">
-                    * {item.catatan}
-                  </span>
-                )}
-              </td>
-            </tr>
+              </p>
+              {item.catatan && (
+                <p class="text-[11px] font-sans text-secondary mt-1.5 italic">
+                  * {item.catatan}
+                </p>
+              )}
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
+
     </div>
 
     <!-- Data Chart Placeholder: "Data Belum Tersedia" State (PRD Section 5) -->
-    <div class="mt-8 border border-line border-dashed bg-surface/50 p-6 md:p-8 text-center" style="border-radius: var(--radius-sm);">
+    <div class="mt-12 border border-line border-dashed bg-surface/50 p-6 md:p-8 text-center rounded-2xl reveal-card">
       <div class="max-w-md mx-auto space-y-2">
         <span class="text-[11px] font-sans tracking-widest uppercase text-muted">Slot Grafik Deret Waktu Produksi</span>
         <h3 class="text-base font-serif text-ink">Visualisasi Volume Panen & Produktivitas</h3>
         <p class="text-xs font-sans text-muted leading-relaxed">
-          Kondisi saat ini: <em>Data statistik deret waktu produksi kopi tahunan belum tersedia</em>. Komponen grafik dirancang siap menerima data agregat resmi dari arsip primer FIB saat angka telah terverifikasi.
+          Kondisi saat ini: <em>Data statistik deret waktu produksi kopi tahunan belum tersedia</em>. Komponen grafik dirancang siap menerima data agregat resmi dari arsip primer saat angka telah terverifikasi.
         </p>
         <div class="pt-3 flex items-center justify-center gap-4 text-[11px] font-sans text-muted">
           <span class="tabular">Satuan: Ton / Hektare [ISI DARI FIB]</span>
@@ -80,7 +118,37 @@ import ContourDivider from './ContourDivider.astro';
         </div>
       </div>
     </div>
+
   </div>
 
-  <ContourDivider label="Data Lahan & Komoditas" />
+  <ContourDivider label="Dimensi Sosial & Ketenagakerjaan" />
 </section>
+
+<!-- Synchronized Row Hover Highlighting Script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const rows = document.querySelectorAll('.comparison-row');
+
+    rows.forEach((row) => {
+      row.addEventListener('mouseenter', () => {
+        const aspectId = row.getAttribute('data-aspect-id');
+        if (!aspectId) return;
+
+        const siblings = document.querySelectorAll(`[data-aspect-id="${aspectId}"]`);
+        siblings.forEach((sib) => {
+          sib.classList.add('bg-accent/10', 'dark:bg-accent/20');
+        });
+      });
+
+      row.addEventListener('mouseleave', () => {
+        const aspectId = row.getAttribute('data-aspect-id');
+        if (!aspectId) return;
+
+        const siblings = document.querySelectorAll(`[data-aspect-id="${aspectId}"]`);
+        siblings.forEach((sib) => {
+          sib.classList.remove('bg-accent/10', 'dark:bg-accent/20');
+        });
+      });
+    });
+  });
+</script>

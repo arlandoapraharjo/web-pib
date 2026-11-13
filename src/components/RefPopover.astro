@@ -14,18 +14,17 @@ import { sumber } from '../lib/content';
   role="dialog"
   aria-modal="true"
   aria-labelledby="ref-popover-title"
-  class="fixed z-50 opacity-0 pointer-events-none transition-all duration-200 bg-surface border border-line p-5 shadow-sm max-w-md w-[calc(100vw-2rem)] md:w-96 text-left"
-  style="border-radius: var(--radius-sm);"
+  class="fixed z-50 opacity-0 pointer-events-none transition-all duration-200 bg-surface border border-line p-5 shadow-lg max-w-md w-[calc(100vw-2rem)] md:w-96 text-left rounded-2xl"
 >
   <div class="flex items-start justify-between gap-3 pb-3 border-b border-line/40">
     <div>
       <span id="ref-popover-type" class="text-[11px] font-sans tracking-wide text-muted uppercase">Jenis Sumber</span>
-      <span id="ref-popover-status" class="ml-2 text-[11px] font-sans px-1.5 py-0.5 border">Status</span>
+      <span id="ref-popover-status" class="ml-2 text-[11px] font-sans font-medium">Status</span>
     </div>
     <button
       type="button"
       id="ref-popover-close"
-      class="text-muted hover:text-ink text-xs font-sans px-1.5 py-0.5 border border-line/50 hover:border-ink transition-colors"
+      class="text-muted hover:text-ink text-xs font-sans px-2 py-1 border border-line/50 hover:border-ink transition-colors rounded-md"
       aria-label="Tutup panel referensi"
     >
       Esc ×
@@ -87,10 +86,10 @@ import { sumber } from '../lib/content';
 
       if (item.status === 'bersumber') {
         statusEl.textContent = 'Bersumber';
-        statusEl.className = 'ml-2 text-[11px] font-sans px-1.5 py-0.5 border border-accent/60 text-accent';
+        statusEl.className = 'ml-2 text-[11px] font-sans text-accent font-medium';
       } else {
         statusEl.textContent = 'Perlu Pemeriksaan';
-        statusEl.className = 'ml-2 text-[11px] font-sans px-1.5 py-0.5 border border-line text-muted border-dashed';
+        statusEl.className = 'ml-2 text-[11px] font-sans text-muted italic';
       }
 
       if (item.url) {

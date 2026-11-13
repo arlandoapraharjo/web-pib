@@ -27,7 +27,7 @@ import { sumber } from '../lib/content';
       <button
         type="button"
         id="ref-drawer-close"
-        class="text-xs font-sans px-2.5 py-1 border border-line text-muted hover:text-ink hover:border-ink transition-colors"
+        class="text-xs font-sans px-3 py-1.5 border border-line text-muted hover:text-ink hover:border-ink transition-colors rounded-lg"
         aria-label="Tutup daftar referensi"
       >
         Tutup [Esc]
@@ -41,8 +41,7 @@ import { sumber } from '../lib/content';
         type="search"
         id="ref-search"
         placeholder="Cari berdasarkan penulis, judul, atau tahun..."
-        class="w-full text-xs font-sans px-3 py-2 bg-surface border border-line text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent"
-        style="border-radius: var(--radius-sm);"
+        class="w-full text-xs font-sans px-3.5 py-2.5 bg-surface border border-line text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent rounded-lg"
       />
     </div>
 
@@ -55,7 +54,7 @@ import { sumber } from '../lib/content';
         >
           <div class="flex items-center justify-between text-[11px] font-sans text-muted mb-1.5">
             <span class="tabular font-medium text-accent">[{idx + 1}] {s.jenis} · {s.tahun}</span>
-            <span class={s.status === 'bersumber' ? 'text-accent border border-accent/40 px-1 py-0.2' : 'text-muted border border-dashed border-line px-1 py-0.2'}>
+            <span class={s.status === 'bersumber' ? 'text-accent font-medium' : 'text-muted italic'}>
               {s.status === 'bersumber' ? 'Bersumber' : 'Perlu Pemeriksaan'}
             </span>
           </div>

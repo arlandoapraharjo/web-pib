@@ -164,6 +164,48 @@ const {
             },
           });
         }
+
+        // 5. GSAP Scroll-Triggered Text Reveal and Card Reveal
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+          // Kinetic Text Reveal
+          const textRevealElements = document.querySelectorAll(
+            'section h2, section p.max-w-2xl, section p.max-w-xl, .reveal-text'
+          );
+          textRevealElements.forEach((el) => {
+            gsap.from(el, {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 88%',
+                toggleActions: 'play none none none',
+              },
+              y: 28,
+              opacity: 0,
+              duration: 0.85,
+              ease: 'power3.out',
+            });
+          });
+
+          // Kinetic Card Reveal
+          const cardRevealElements = document.querySelectorAll(
+            '.media-slot-container, .reveal-card, article'
+          );
+          cardRevealElements.forEach((card) => {
+            gsap.from(card, {
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+              y: 35,
+              scale: 0.97,
+              opacity: 0,
+              duration: 0.9,
+              ease: 'power3.out',
+            });
+          });
+        }
       }
     </script>
   </body>

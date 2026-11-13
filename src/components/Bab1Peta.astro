@@ -7,8 +7,7 @@ import MapSlot from './MapSlot.astro';
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <!-- Chapter Header -->
     <div class="mb-8">
-      <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 1 / Orientasi Spasial</span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-ink mt-1">Lanskap & Peta Dua Perkebunan</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-ink">Lanskap & Peta Dua Perkebunan</h2>
       <p class="text-xs md:text-sm font-sans text-muted mt-2 max-w-2xl leading-relaxed">
         Orientasi letak Perkebunan Sumber Tenggulun di wilayah Jember bagian barat (Kecamatan Tanggul) dan Perkebunan Kali Jompo di lereng pegunungan Hyang Argopuro bagian timur (Kecamatan Sukorambi).
       </p>
@@ -21,13 +20,12 @@ import MapSlot from './MapSlot.astro';
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       {lokasi.map((item) => (
         <article
-          class="p-5 border border-line bg-surface flex flex-col justify-between"
-          style="border-radius: var(--radius-sm);"
+          class="p-5 sm:p-6 border border-line bg-surface flex flex-col justify-between rounded-xl shadow-xs"
         >
           <div>
             <div class="flex items-center justify-between text-xs font-sans pb-2 border-b border-line/50">
-              <span class="font-medium text-ink">{item.nama}</span>
-              <span class={item.status_data === 'bersumber' ? 'text-accent border border-accent/40 px-1.5 py-0.2' : 'text-muted border border-dashed border-line px-1.5 py-0.2'}>
+              <span class="font-medium text-ink text-sm font-serif">{item.nama}</span>
+              <span class={item.status_data === 'bersumber' ? 'text-accent font-medium text-[11px]' : 'text-muted italic text-[11px]'}>
                 {item.status_data === 'bersumber' ? 'Data Bersumber' : 'Perlu Pemeriksaan'}
               </span>
             </div>
@@ -45,7 +43,7 @@ import MapSlot from './MapSlot.astro';
               href={item.id === 'kali-jompo' ? '#bab-2' : '#bab-3'}
               class="min-h-[32px] inline-flex items-center text-accent hover:text-ink font-medium border-b border-accent/40 hover:border-ink transition-colors"
             >
-              Baca Telaah Bab {item.id === 'kali-jompo' ? '2' : '3'} →
+              Baca Telaah {item.id === 'kali-jompo' ? 'Kali Jompo' : 'Sumber Tenggulun'} →
             </a>
           </div>
         </article>

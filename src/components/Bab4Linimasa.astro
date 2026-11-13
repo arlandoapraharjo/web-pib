@@ -1,29 +1,19 @@
 ---
-import { peristiwa } from '../lib/content';
 import RefMarker from './RefMarker.astro';
-
-const kjEvents = peristiwa.filter((p) => p.lokasi_id === 'kali-jompo');
-const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
 ---
 
+<!-- Bab 4: Linimasa Sejarah Dua Perkebunan (Horizontal Pinned Scroll Desktop, Clean Responsive Stack Mobile, Smooth Rounded Cards) -->
 <section id="bab-4" class="relative w-full border-t border-line/40 overflow-hidden">
   
   <!-- DESKTOP PINNED HORIZONTAL STAGE (Controlled purely by mouse wheel / trackpad scroll) -->
-  <div id="timeline-pinned-wrapper" class="hidden md:flex flex-col justify-between w-full h-screen overflow-hidden py-10 px-8 lg:px-16 bg-ground">
-    
-    <!-- Top Stage Header -->
+  <div
+    id="timeline-pinned-wrapper"
+    class="hidden md:flex h-screen w-full flex-col justify-between p-6 lg:p-10 max-w-7xl mx-auto overflow-hidden"
+  >
+    <!-- Stage Header -->
     <div class="flex items-end justify-between border-b border-line pb-4 shrink-0">
       <div>
-        <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 4 / Kronologi Lintas Abad</span>
-        <h2 class="text-2xl lg:text-3xl font-serif text-ink mt-0.5">Linimasa Sejarah Dua Perkebunan</h2>
-      </div>
-
-      <!-- Live Wheel Scroll Guide -->
-      <div class="flex items-center gap-3 text-xs font-sans text-muted">
-        <span class="inline-flex items-center gap-2 border border-line/60 rounded-sm px-2.5 py-1 bg-surface/40">
-          <span class="w-1.5 h-1.5 bg-accent" style="border-radius: 1px;"></span>
-          <span>Gulir Mouse / Trackpad untuk Menelusuri Linimasa Horizontal →</span>
-        </span>
+        <h2 class="text-2xl lg:text-3xl font-serif text-ink">Linimasa Sejarah Dua Perkebunan</h2>
       </div>
     </div>
 
@@ -34,7 +24,7 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
         class="flex flex-nowrap items-stretch gap-8 will-change-transform select-none"
       >
         <!-- Intro Anchor Card -->
-        <div class="w-[320px] shrink-0 border border-line/60 bg-surface/40 p-6 flex flex-col justify-between rounded-sm">
+        <div class="w-[320px] shrink-0 border border-line/60 bg-surface/40 p-6 flex flex-col justify-between rounded-xl">
           <div>
             <span class="text-[11px] font-sans tracking-widest uppercase text-accent font-medium">Skala Waktu 1884–2020</span>
             <h3 class="text-xl font-serif text-ink mt-2">Dua Lereng, Dua Jalur Historis</h3>
@@ -42,13 +32,10 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
               Penelusuran komparatif antara Kali Jompo di timur dan Sumber Tenggulun di barat. Garis solid menandai data bersumber, garis putus-putus menandai verifikasi arsip.
             </p>
           </div>
-          <div class="text-[11px] font-sans text-muted/80 italic pt-3 border-t border-line/30">
-            Gulir terus ke bawah untuk menggeser →
-          </div>
         </div>
 
         <!-- Track Card 1: Kali Jompo 1884 -->
-        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-xl shadow-sm hover:border-accent transition-colors">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
               <span class="font-medium">Kali Jompo (Lereng Timur)</span>
@@ -74,11 +61,11 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
         <!-- Connecting Bar 1884 -> 1890 -->
         <div class="shrink-0 flex flex-col justify-center items-center px-2">
           <span class="text-[10px] font-sans text-muted tracking-widest uppercase mb-1">6 Tahun</span>
-          <div class="w-16 h-[2px] bg-accent"></div>
+          <div class="w-16 h-[2px] bg-accent rounded-full"></div>
         </div>
 
         <!-- Track Card 2: Kali Jompo 1890 -->
-        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-xl shadow-sm hover:border-accent transition-colors">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
               <span class="font-medium">Kali Jompo (Badan Usaha)</span>
@@ -103,14 +90,14 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
 
         <!-- TIME BREAK MARKER (PRD Section 11) -->
         <div class="shrink-0 flex flex-col justify-center items-center px-4">
-          <div class="px-3 py-1 border border-line/60 bg-ground text-[11px] font-sans text-muted flex items-center gap-2 rounded-sm">
+          <div class="text-[11px] font-sans text-muted tracking-wider">
             <span>// Jeda Waktu 108 Tahun //</span>
           </div>
           <div class="w-24 h-[1px] border-b border-dashed border-line mt-2"></div>
         </div>
 
         <!-- Track Card 3: Kali Jompo 1998-2020 -->
-        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm shadow-sm hover:border-accent transition-colors">
+        <div class="w-[380px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-xl shadow-sm hover:border-accent transition-colors">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-accent/40 text-xs font-sans text-accent">
               <span class="font-medium">Kali Jompo (Kehidupan Buruh)</span>
@@ -134,7 +121,7 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
         </div>
 
         <!-- Track Card 4: Sumber Tenggulun (Jalur Bawah / Pembanding) -->
-        <div class="w-[420px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-sm border-dashed shadow-sm">
+        <div class="w-[420px] shrink-0 border border-line bg-surface p-6 flex flex-col justify-between rounded-xl border-dashed shadow-sm">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-line text-xs font-sans text-muted">
               <span class="font-medium text-ink">Sumber Tenggulun (Jember Barat)</span>
@@ -160,11 +147,11 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
       </div>
     </div>
 
-    <!-- Bottom Stage Legend & Outro Hint -->
+    <!-- Bottom Stage Legend -->
     <div class="flex items-center justify-between border-t border-line pt-4 text-xs font-sans text-muted shrink-0">
       <div class="flex items-center gap-6">
         <span class="flex items-center gap-2">
-          <span class="w-3 h-0.5 bg-accent inline-block"></span>
+          <span class="w-3 h-0.5 bg-accent inline-block rounded-full"></span>
           <span>Garis Solid: Data Bersumber</span>
         </span>
         <span class="flex items-center gap-2">
@@ -172,24 +159,20 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
           <span>Garis Putus-Putus: Perlu Pemeriksaan</span>
         </span>
       </div>
-      <div class="text-ink font-medium">
-        Lanjut gulir ke Bab 5 (Perbandingan) ↓
-      </div>
     </div>
   </div>
 
   <!-- MOBILE VIEW (Clean Natural Vertical Stack for Touch Devices) -->
   <div class="md:hidden py-16 px-4 space-y-6">
     <div class="mb-6">
-      <span class="text-xs font-sans tracking-widest uppercase text-muted">Bab 4 / Kronologi Lintas Abad</span>
-      <h2 class="text-2xl font-serif text-ink mt-1">Linimasa Sejarah Dua Perkebunan</h2>
+      <h2 class="text-2xl font-serif text-ink">Linimasa Sejarah Dua Perkebunan</h2>
       <p class="text-xs font-sans text-muted mt-2 leading-relaxed">
         Skala waktu komparatif antara Kali Jompo dan Sumber Tenggulun.
       </p>
     </div>
 
     <!-- Mobile Card 1 -->
-    <div class="border border-line bg-surface p-5 rounded-sm">
+    <div class="border border-line bg-surface p-5 rounded-xl shadow-xs">
       <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
         <span>Kali Jompo</span>
         <span>Bersumber</span>
@@ -205,7 +188,7 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
     </div>
 
     <!-- Mobile Card 2 -->
-    <div class="border border-line bg-surface p-5 rounded-sm">
+    <div class="border border-line bg-surface p-5 rounded-xl shadow-xs">
       <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
         <span>Kali Jompo</span>
         <span>Bersumber</span>
@@ -225,7 +208,7 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
     </div>
 
     <!-- Mobile Card 3 -->
-    <div class="border border-line bg-surface p-5 rounded-sm">
+    <div class="border border-line bg-surface p-5 rounded-xl shadow-xs">
       <div class="flex items-center justify-between text-xs font-sans text-accent pb-2 border-b border-accent/30">
         <span>Kali Jompo</span>
         <span>Periode Kajian</span>
@@ -241,7 +224,7 @@ const stEvents = peristiwa.filter((p) => p.lokasi_id === 'sumber-tenggulun');
     </div>
 
     <!-- Mobile Card 4 -->
-    <div class="border border-line border-dashed bg-surface p-5 rounded-sm">
+    <div class="border border-line border-dashed bg-surface p-5 rounded-xl shadow-xs">
       <div class="flex items-center justify-between text-xs font-sans text-muted pb-2 border-b border-line">
         <span>Sumber Tenggulun</span>
         <span>Perlu Pemeriksaan</span>

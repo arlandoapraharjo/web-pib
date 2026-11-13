@@ -12,8 +12,7 @@ const st = lokasi.find((l) => l.id === 'sumber-tenggulun');
 ---
 
 <div
-  class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] border border-line bg-surface overflow-hidden flex flex-col justify-between"
-  style="border-radius: var(--radius-sm);"
+  class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] border border-line bg-surface overflow-hidden flex flex-col justify-between rounded-2xl shadow-xs"
   id="mapslot-root"
 >
   <!-- Top Slot Meta Bar -->
@@ -23,7 +22,7 @@ const st = lokasi.find((l) => l.id === 'sumber-tenggulun');
       <h3 class="text-sm md:text-base font-serif text-ink mt-0.5">Topografi Skematis Lereng Pegunungan Argopuro</h3>
     </div>
     <div class="text-right">
-      <span class="text-[10px] tracking-wider uppercase border border-line px-2 py-0.5 text-muted">Peta 3D Menyusul</span>
+      <span class="text-[10px] tracking-wider uppercase text-muted">Peta 3D Menyusul</span>
       <p class="text-[11px] text-muted/70 mt-1">Status koordinat: Menunggu verifikasi GPS</p>
     </div>
   </div>
@@ -179,7 +178,7 @@ const st = lokasi.find((l) => l.id === 'sumber-tenggulun');
         id="map-card-action"
         class="hidden text-xs text-accent font-medium border-b border-accent hover:border-ink transition-colors"
       >
-        Selengkapnya di Bab 2/3 ↓
+        Buka Narasi Terkait ↓
       </button>
     </div>
   </div>
@@ -200,7 +199,7 @@ const st = lokasi.find((l) => l.id === 'sumber-tenggulun');
         cardText.innerHTML = `<strong>${item.nama}</strong> (${item.desa}, ${item.kecamatan}) — ${item.ringkasan}`;
         if (cardAction) {
           cardAction.classList.remove('hidden');
-          cardAction.textContent = id === 'kali-jompo' ? 'Buka Narasi Kali Jompo (Bab 2) ↓' : 'Buka Narasi Sumber Tenggulun (Bab 3) ↓';
+          cardAction.textContent = id === 'kali-jompo' ? 'Buka Narasi Kali Jompo ↓' : 'Buka Narasi Sumber Tenggulun ↓';
           cardAction.onclick = () => {
             const targetId = id === 'kali-jompo' ? 'bab-2' : 'bab-3';
             document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });

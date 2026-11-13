@@ -2,38 +2,51 @@
 import { proyek } from '../lib/content';
 ---
 
-<!-- Architectural Navbar (Strict PRD Radius 0-4px, No Rounded-Full Badge Pills) -->
+<!-- Liquid Glass Navbar (Faithful adaptation of gughigug/liquid-glass-navbar to Argopuro aesthetic) -->
 <header class="fixed top-0 left-0 right-0 z-40 px-3 sm:px-6 py-3 pointer-events-none transition-all duration-300">
   <div
-    class="max-w-5xl mx-auto h-12 md:h-13 px-4 md:px-6 flex items-center justify-between text-xs font-sans pointer-events-auto bg-ground/90 border border-line/60 shadow-[0_4px_16px_rgb(0,0,0,0.03)] dark:shadow-[0_4px_16px_rgb(0,0,0,0.15)] transition-colors duration-200"
-    style="border-radius: var(--radius-sm);"
+    class="max-w-5xl mx-auto h-12 md:h-14 px-4 md:px-6 flex items-center justify-between text-xs font-sans pointer-events-auto rounded-full bg-ground/60 dark:bg-[#191815]/60 backdrop-blur-2xl border border-ink/10 dark:border-white/15 shadow-[0_12px_36px_rgba(0,0,0,0.06),_inset_0_1px_1px_rgba(255,255,255,0.7)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.4),_inset_0_1px_1px_rgba(255,255,255,0.15)] transition-all duration-300"
   >
-    <!-- Clean Brand Title -->
-    <div class="flex items-center gap-3">
-      <a href="#bab-0" class="font-serif font-bold text-sm md:text-base text-ink hover:text-accent transition-colors tracking-tight flex items-center gap-2.5 py-2 min-h-[36px]">
-        <span class="w-1.5 h-1.5 bg-accent inline-block" style="border-radius: 1px;"></span>
+    <!-- Brand / Title Anchor -->
+    <div class="flex items-center gap-2.5">
+      <a
+        href="#bab-0"
+        class="font-serif font-bold text-sm md:text-base text-ink hover:text-accent transition-colors tracking-tight flex items-center gap-2 py-1.5 min-h-[36px]"
+      >
+        <span class="w-2 h-2 rounded-full bg-accent inline-block shadow-[0_0_8px_rgba(34,101,38,0.5)]"></span>
         <span>{proyek.judul}</span>
       </a>
     </div>
 
-    <!-- Architectural Navigation Links (Desktop) -->
-    <nav class="hidden md:flex items-center gap-1 text-muted" aria-label="Navigasi Bab">
-      <a href="#bab-1" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Peta</a>
-      <a href="#bab-2" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Kali Jompo</a>
-      <a href="#bab-3" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Sumber Tenggulun</a>
-      <a href="#bab-4" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Linimasa</a>
-      <a href="#bab-5" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Perbandingan</a>
-      <a href="#bab-6" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Sosial</a>
-      <a href="#bab-7" class="px-2.5 py-1.5 rounded-sm hover:text-ink hover:bg-surface transition-all">Galeri</a>
+    <!-- Liquid Hover Navigation Track (Desktop) -->
+    <nav
+      id="liquid-nav"
+      class="hidden md:flex items-center gap-0.5 text-muted relative p-1 rounded-full"
+      aria-label="Navigasi Halaman"
+    >
+      <!-- Liquid Droplet Meniscus Follower -->
+      <div
+        id="liquid-meniscus"
+        class="absolute top-1 bottom-1 rounded-full bg-ink/10 dark:bg-white/15 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out shadow-xs"
+        style="left: 0; width: 0;"
+        aria-hidden="true"
+      ></div>
+
+      <a href="#bab-1" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Peta</a>
+      <a href="#bab-2" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Kali Jompo</a>
+      <a href="#bab-3" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Sumber Tenggulun</a>
+      <a href="#bab-4" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Linimasa</a>
+      <a href="#bab-5" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Perbandingan</a>
+      <a href="#bab-6" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Sosial</a>
+      <a href="#bab-7" class="liquid-link px-3 py-1.5 rounded-full hover:text-ink transition-colors relative z-10">Galeri</a>
     </nav>
 
-    <!-- Right Controls: Reference Trigger & Theme Toggle -->
-    <div class="flex items-center gap-2 sm:gap-3">
+    <!-- Right Controls: Frosted Liquid Pill Buttons -->
+    <div class="flex items-center gap-2 sm:gap-2.5">
       <button
         type="button"
         data-open-ref-drawer
-        class="min-h-[30px] px-3 py-1 bg-ink text-ground hover:bg-accent text-xs font-sans font-medium transition-all duration-200 cursor-pointer"
-        style="border-radius: var(--radius-sm);"
+        class="min-h-[32px] px-3.5 py-1 bg-ink text-ground hover:bg-accent text-xs font-sans font-medium rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md hover:scale-105 active:scale-95"
         aria-label="Buka bibliografi dan referensi dokumen sejarah"
       >
         Referensi
@@ -42,8 +55,7 @@ import { proyek } from '../lib/content';
       <button
         type="button"
         id="theme-toggle"
-        class="min-h-[30px] min-w-[32px] px-2.5 py-1 border border-line/60 hover:border-ink text-ink transition-all duration-200 hover:bg-surface text-[11px] font-sans flex items-center justify-center cursor-pointer"
-        style="border-radius: var(--radius-sm);"
+        class="min-h-[32px] min-w-[34px] px-2.5 py-1 border border-ink/15 dark:border-white/20 hover:border-ink text-ink transition-all duration-200 hover:bg-surface/80 rounded-full text-[11px] font-sans flex items-center justify-center cursor-pointer active:scale-95"
         aria-label="Ganti mode tampilan terang atau gelap"
       >
         <span id="theme-toggle-label">Gelap</span>
@@ -54,6 +66,7 @@ import { proyek } from '../lib/content';
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
+    // 1. Theme Switcher Logic
     const themeToggle = document.getElementById('theme-toggle');
     const themeLabel = document.getElementById('theme-toggle-label');
     const root = document.documentElement;
@@ -68,5 +81,34 @@ import { proyek } from '../lib/content';
       localStorage.setItem('theme', active);
       if (themeLabel) themeLabel.textContent = active === 'dark' ? 'Terang' : 'Gelap';
     });
+
+    // 2. Liquid Droplet Meniscus Hover Follower
+    const nav = document.getElementById('liquid-nav');
+    const meniscus = document.getElementById('liquid-meniscus');
+    const links = document.querySelectorAll('.liquid-link');
+
+    if (nav && meniscus && links.length > 0) {
+      links.forEach((link) => {
+        link.addEventListener('mouseenter', () => {
+          const navRect = nav.getBoundingClientRect();
+          const linkRect = link.getBoundingClientRect();
+          meniscus.style.left = `${linkRect.left - navRect.left}px`;
+          meniscus.style.width = `${linkRect.width}px`;
+          meniscus.style.opacity = '1';
+        });
+
+        link.addEventListener('focus', () => {
+          const navRect = nav.getBoundingClientRect();
+          const linkRect = link.getBoundingClientRect();
+          meniscus.style.left = `${linkRect.left - navRect.left}px`;
+          meniscus.style.width = `${linkRect.width}px`;
+          meniscus.style.opacity = '1';
+        });
+      });
+
+      nav.addEventListener('mouseleave', () => {
+        meniscus.style.opacity = '0';
+      });
+    }
   });
 </script>
